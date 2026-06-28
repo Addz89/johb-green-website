@@ -368,7 +368,7 @@ function setupNativeAudioPlayers() {
     { title: "Kronos - time has won", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/01%20Kronos%20-%20time%20has%20won.m4a", artist: "Johb Ashar" },
     { title: "The Gift - the death", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/02%20The%20Gift%20-%20the%20death.m4a", artist: "Johb Ashar" },
     { title: "Dorothy part 1", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/03%20Dorothy%20part%201.m4a", artist: "Johb Ashar" },
-    { title: "I_m in Love - guitar mix", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/04%20I_m%20in%20Love%20-%20guitar%20mix.m4a", artist: "Johb Ashar" },
+    { title: "I'm in Love - guitar mix", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/04%20I_m%20in%20Love%20-%20guitar%20mix.m4a", artist: "Johb Ashar" },
     { title: "Without U - by my side", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/05%20Without%20U%20-%20by%20my%20side.m4a", artist: "Johb Ashar" },
     { title: "Learning how to Fly", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/06%20Learning%20how%20to%20Fly.m4a", artist: "Johb Ashar" },
     { title: "Chant des Sirenes part 1", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Memoria/07%20Chant%20des%20Sirenes%20part%201.m4a", artist: "Johb Ashar" },
@@ -390,10 +390,10 @@ function setupNativeAudioPlayers() {
     { title: "SALVIFICI DOLORIS PART TWO", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/02%20SALVIFICI%20DOLORIS%20PART%20TWO.m4a", artist: "Johb Ashar" },
     { title: "SALVIFICI DOLORIS PART THREE", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/03%20SALVIFICI%20DOLORIS%20PART%20THREE.m4a", artist: "Johb Ashar" },
     { title: "SALVIFICI DOLORIS PART FOUR", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/04%20SALVIFICI%20DOLORIS%20PART%20FOUR.m4a", artist: "Johb Ashar" },
-    { title: "SYMPHONY 12 - PART 1_ SORROW", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/05%20SYMPHONY%2012%20-%20PART%201_%20SORROW.m4a", artist: "Johb Ashar" },
-    { title: "SYMPHONY 12 - PART 2_ MY GOD", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/06%20SYMPHONY%2012%20-%20PART%202_%20MY%20GOD.m4a", artist: "Johb Ashar" },
-    { title: "SYMPHONY 12 - PART 3_ PUSHING THE LIMITS", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/07%20SYMPHONY%2012%20-%20PART%203_%20PUSHING%20THE%20LIMITS.m4a", artist: "Johb Ashar" },
-    { title: "SYMPHONY 12 - PART 4_ IF ONE SUFFERS WE ALL SUFFER", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/08%20SYMPHONY%2012%20-%20PART%204_%20IF%20ONE%20SUFFERS%20WE%20ALL%20SUFFER.m4a", artist: "Johb Ashar" }
+    { title: "SYMPHONY 12 - PART 1 SORROW", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/05%20SYMPHONY%2012%20-%20PART%201_%20SORROW.m4a", artist: "Johb Ashar" },
+    { title: "SYMPHONY 12 - PART 2 MY GOD", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/06%20SYMPHONY%2012%20-%20PART%202_%20MY%20GOD.m4a", artist: "Johb Ashar" },
+    { title: "SYMPHONY 12 - PART 3 PUSHING THE LIMITS", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/07%20SYMPHONY%2012%20-%20PART%203_%20PUSHING%20THE%20LIMITS.m4a", artist: "Johb Ashar" },
+    { title: "SYMPHONY 12 - PART 4 IF ONE SUFFERS WE ALL SUFFER", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Opprimitur%20Affectibus/08%20SYMPHONY%2012%20-%20PART%204_%20IF%20ONE%20SUFFERS%20WE%20ALL%20SUFFER.m4a", artist: "Johb Ashar" }
 ],
 "requiem-for-a-sinner": [
     { title: "Requiem Aeteram", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Requiem%20for%20a%20Sinner/01%20Requiem%20Aeteram.m4a", artist: "Johb Ashar" },
@@ -455,7 +455,7 @@ function setupNativeAudioPlayers() {
     { title: "God Does Not Lie", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/10%20God%20Does%20Not%20Lie.m4a", artist: "Johb Ashar" },
     { title: "Sword That Remembers Every Name", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/11%20Sword%20That%20Remembers%20Every%20Name.m4a", artist: "Johb Ashar" },
     { title: "Can You Measure God", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/12%20Can%20You%20Measure%20God.m4a", artist: "Johb Ashar" },
-    { title: "You_ve Been Faithful Long Enough", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/13%20You_ve%20Been%20Faithful%20Long%20Enough.m4a", artist: "Johb Ashar" },
+    { title: "You've Been Faithful Long Enough", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/13%20You_ve%20Been%20Faithful%20Long%20Enough.m4a", artist: "Johb Ashar" },
     { title: "Answer Me", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20One/14%20Answer%20Me.m4a", artist: "Johb Ashar" }
 ],
 
@@ -465,7 +465,7 @@ function setupNativeAudioPlayers() {
     { title: "I Remember", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/03%20I%20Remember.m4a", artist: "Johb Ashar" },
     { title: "Taste The Truth", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/04%20Taste%20The%20Truth.m4a", artist: "Johb Ashar" },
     { title: "Bring All My Love Back Home", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/05%20Bring%20All%20My%20Love%20Back%20Home.m4a", artist: "Johb Ashar" },
-    { title: "I Am Innocent_ Still I_m Denied", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/06%20I%20Am%20Innocent_%20Still%20I_m%20Denied.m4a", artist: "Johb Ashar" },
+    { title: "I Am Innocent Still I_m Denied", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/06%20I%20Am%20Innocent_%20Still%20I_m%20Denied.m4a", artist: "Johb Ashar" },
     { title: "Where Were You", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/07%20Where%20Were%20You.m4a", artist: "Johb Ashar" },
     { title: "Dust And Ashes", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/08%20Dust%20And%20Ashes.m4a", artist: "Johb Ashar" },
     { title: "Hymnus De Sapientia Abscondita", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Skin%20for%20Skin%20-%20Volume%20Two/09%20Hymnus%20De%20Sapientia%20Abscondita.m4a", artist: "Johb Ashar" },
@@ -481,7 +481,7 @@ function setupNativeAudioPlayers() {
     { title: "Solace in My Wound Part 4_ Solace", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/07%20Solace%20in%20My%20Wound%20Part%204_%20Solace.m4a", artist: "Johb Ashar" },
     { title: "Solace in My Wound Part 5_ Hold My Heart", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/08%20Solace%20in%20My%20Wound%20Part%205_%20Hold%20My%20Heart.m4a", artist: "Johb Ashar" },
     { title: "Solace in My Wound Part 6_ Finale", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/09%20Solace%20in%20My%20Wound%20Part%206_%20Finale.m4a", artist: "Johb Ashar" },
-    { title: "Not Invited_ Ma_a d-dam mix", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/10%20Not%20Invited_%20Ma_a%20d-dam%20mix.m4a", artist: "Johb Ashar" },
+    { title: "Not Invited Ma a d-dam mix", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/10%20Not%20Invited_%20Ma_a%20d-dam%20mix.m4a", artist: "Johb Ashar" },
     { title: "Queen of the Noble Cause", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/11%20Queen%20of%20the%20Noble%20Cause.m4a", artist: "Johb Ashar" },
     { title: "Sipping Blood from a Cup (if it is geniune mix)", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/12%20Sipping%20Blood%20from%20a%20Cup%20(if%20it%20is%20geniune%20mix).m4a", artist: "Johb Ashar" },
     { title: "Not Invited", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Solace%20In%20My%20Wound/13%20Not%20Invited.m4a", artist: "Johb Ashar" }
@@ -497,10 +497,10 @@ function setupNativeAudioPlayers() {
 ],
 
 "symphony-4-portrait": [
-    { title: "Symphony 4 _Portrait_ Movement 1", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/01%20Symphony%204%20_%20Portrait%20_%20Movement%201.m4a", artist: "Johb Ashar" },
-    { title: "Symphony 4 _Portrait_ Movement 2", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/02%20Symphony%204%20_%20Portrait%20_%20Movement%202.m4a", artist: "Johb Ashar" },
-    { title: "Symphony 4 _Portrait_ Movement 3", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/03%20Symphony%204%20_%20Portrait%20_%20Movement%203.m4a", artist: "Johb Ashar" },
-    { title: "Symphony 4 _Portrait_ Movement 4", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/04%20Symphony%204%20_%20Portrait%20_%20Movement%204.m4a", artist: "Johb Ashar" },
+    { title: "Symphony 4 Portrait Movement 1", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/01%20Symphony%204%20_%20Portrait%20_%20Movement%201.m4a", artist: "Johb Ashar" },
+    { title: "Symphony 4 Portrait Movement 2", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/02%20Symphony%204%20_%20Portrait%20_%20Movement%202.m4a", artist: "Johb Ashar" },
+    { title: "Symphony 4 Portrait Movement 3", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/03%20Symphony%204%20_%20Portrait%20_%20Movement%203.m4a", artist: "Johb Ashar" },
+    { title: "Symphony 4 Portrait Movement 4", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/04%20Symphony%204%20_%20Portrait%20_%20Movement%204.m4a", artist: "Johb Ashar" },
     { title: "6484", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/05%206484.m4a", artist: "Johb Ashar" },
     { title: "The Coming of Darkness", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/06%20The%20Coming%20of%20Darkness.m4a", artist: "Johb Ashar" },
     { title: "Light to Feel God", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/Symphony%204%20-%20PORTRAIT/07%20Light%20to%20Feel%20God.m4a", artist: "Johb Ashar" },
