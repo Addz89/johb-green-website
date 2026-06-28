@@ -1,3 +1,9 @@
+/* =========================================================
+   JOHB ASHAR WEBSITE JAVA SCRIPT PAGE
+   Designed by Moxi Corp Studio
+   ========================================================= */
+
+
 document.addEventListener('DOMContentLoaded', () => {
     
     // --- Circular Equalizer Logic ---
