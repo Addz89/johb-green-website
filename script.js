@@ -200,12 +200,12 @@ function setupNativeAudioPlayers() {
     file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/01%20Sixteen%20Twenty%20Three.m4a",
     artist: "Johb Ashar"
   },
-      { title: "Twenty Eight Thirty Four", file: "albums/1623/02 Twenty Eight Thirty Four.m4a", artist: "Johb Ashar" },
-      { title: "Four One Eleven", file: "albums/1623/03 Four One Eleven.m4a", artist: "Johb Ashar" },
-      { title: "Peace. Be Still.", file: "albums/1623/04 Peace. Be Still.m4a", artist: "Johb Ashar" },
-      { title: "Thirty Nine Forty Six", file: "albums/1623/05 Thirty Nine Forty Six.m4a", artist: "Johb Ashar" },
-      { title: "I AM", file: "albums/1623/06 I AM.m4a", artist: "Johb Ashar" },
-      { title: "Symphony 23 Complete", file: "albums/1623/07 Symphony 23 Complete_ 1623.m4a", artist: "Johb Ashar" }
+      { title: "Twenty Eight Thirty Four", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/02%20Twenty%20Eight%20Thirty%20Four.m4a", artist: "Johb Ashar" },
+      { title: "Four One Eleven", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/03%20Four%20One%20Eleven.m4a", artist: "Johb Ashar" },
+      { title: "Peace. Be Still.", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/04%20Peace.%20Be%20Still.m4a", artist: "Johb Ashar" },
+      { title: "Thirty Nine Forty Six", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/05%20Thirty%20Nine%20Forty%20Six.m4a", artist: "Johb Ashar" },
+      { title: "I AM", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/06%20I%20AM.m4a", artist: "Johb Ashar" },
+      { title: "Symphony 23 Complete", file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/07%20Symphony%2023%20Complete_%201623.m4a", artist: "Johb Ashar" }
     ],
 
     "another-victory": [
