@@ -197,7 +197,7 @@ function setupNativeAudioPlayers() {
   const albums = {
     "1623": [
  {title: "Sixteen Twenty Three",
-    file: "https://media.githubusercontent.com/media/Addz89/johb-green-website/refs/heads/main/albums/1623/01%20Sixteen%20Twenty%20Three.m4a",
+    file: "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/albums/1623/01%20Sixteen%20Twenty%20Three.m4a",
     artist: "Johb Ashar"
   },
       { title: "Twenty Eight Thirty Four", file: "albums/1623/02 Twenty Eight Thirty Four.m4a", artist: "Johb Ashar" },
