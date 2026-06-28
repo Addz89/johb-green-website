@@ -1,0 +1,1258 @@
+/* --- CSS Reset & Base Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #050505; /* Dark fallback background */
+    color: #ffffff;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    z-index: 10; /* Ensures header stays above the hero background */
+}
+
+.logo {
+    font-family: "Cinzel", serif;
+    font-size: 1rem;
+    letter-spacing: 0.3em;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.main-nav a:hover {
+    opacity: 1;
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4rem;
+    position: relative;
+    
+    /* Background Image with Dark Overlay */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), url('images/hero.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* --- Hero Typography --- */
+.hero-content {
+    text-align: center;
+    flex-grow: 1; /* Pushes arrows to the edges */
+}
+
+.hero-content h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 6rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+.hero-content .subtitle {
+    font-size: 0.85rem;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+/* --- Carousel Arrows --- */
+.nav-arrow {
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.nav-arrow:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- Reusable Section Styles --- */
+.content-section {
+    padding: 8rem 4rem;
+    background-color: #050505;
+}
+
+.bg-darker {
+    background-color: #020202; /* Creates subtle contrast between sections */
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.section-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #a0a0a0;
+    margin-bottom: 2.5rem;
+    max-width: 600px;
+}
+
+/* --- Split Layout (Image/Text side-by-side) --- */
+.split-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4rem;
+}
+
+.text-block {
+    flex: 1;
+}
+
+.media-block {
+    flex: 1;
+}
+
+/* --- Center Layout --- */
+.center-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.center-layout .section-text {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Buttons --- */
+.btn-outline {
+    display: inline-block;
+    padding: 1rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* --- Video Placeholder --- */
+.video-placeholder {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background-color: #111;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.video-placeholder:hover {
+    transform: scale(1.02);
+}
+
+.play-btn {
+    font-size: 3rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: color 0.3s ease;
+}
+
+.video-placeholder:hover .play-btn {
+    color: #ffffff;
+}
+
+/* --- Footer --- */
+.site-footer {
+    padding: 4rem;
+    background-color: #000000;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer-logo {
+    margin-bottom: 2rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.social-links a {
+    color: #a0a0a0;
+    text-decoration: none;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ffffff;
+}
+
+.copyright {
+    font-size: 0.7rem;
+    color: #444;
+    letter-spacing: 1px;
+}
+
+/* --- YouTube Embed --- */
+.youtube-embed {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px; /* Optional: adds a very subtle softening to the sharp corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6); /* Adds a cinematic shadow behind the video */
+    background-color: #000000;
+}
+
+/* About Page html */
+
+/* --- About Page Specific Styles --- */
+.about-page-content {
+    /* Pushes the content down so it doesn't hide under the floating header */
+    padding-top: 120px; 
+}
+
+.about-image {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Hero Typography Update --- */
+.hero-content {
+    text-align: center;
+    flex-grow: 1;
+    position: relative; /* Added to anchor the absolute equalizer */
+    z-index: 2; /* Keeps the text on top */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- Circular Equalizer Effect --- */
+.circular-equalizer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1px;
+    height: 1px;
+    z-index: -1; /* Pushes it behind the H1 and subtitle */
+    pointer-events: none; /* Ensures it doesn't block text highlighting */
+}
+
+/* Base styles for the bars that JavaScript will create */
+.eq-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2px;
+    background-color: rgba(202, 119, 119, 0.5); /* Soft white */
+    border-radius: 2px;
+    transform-origin: center bottom; /* Anchors the animation correctly */
+    /* The animation calls the keyframes below */
+    animation: eq-pulse infinite ease-in-out alternate;
+}
+
+/* The up-and-down audio wave animation */
+@keyframes eq-pulse {
+    0% {
+        height: 5px;
+        opacity: 0.2;
+    }
+    100% {
+        height: 45px; /* Maximum height of the audio spike */
+        opacity: 0.8;
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.4); /* Adds a subtle glow */
+    }
+
+    
+}
+/* Music Page HTML */
+
+/* --- Music Page Layout --- */
+/* --- Music Page Layout --- */
+.music-page-content {
+    padding-top: 120px; /* Clears the absolute header */
+    padding-bottom: 8rem; /* Adds breathing room at the bottom of the page */
+    
+    /* Background Image with Dark Overlay */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('images/hero2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    
+    /* ADD THIS for a premium parallax effect (the image stays still while the cards scroll over it) */
+    background-attachment: fixed; 
+}
+.content-section{
+    background: none;
+}
+
+.text-center {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+/* 3-Column Grid setup */
+.audio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual Card Styling */
+.audio-card {
+    background-color: #1a1a1a; 
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    gap: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.audio-card:hover {
+    transform: translateY(-3px);
+    background-color: #222222;
+}
+
+/* Thumbnail and Play Button */
+.audio-thumbnail {
+    position: relative;
+    width: 120px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.audio-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.overlay-gradient {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(to right, rgba(0,0,0,0.1), rgba(0,0,0,0.8));
+}
+
+.card-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(184, 150, 105, 0.8); /* Matches the golden-brown color in the mockup */
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.card-play-btn:hover {
+    background: rgba(184, 150, 105, 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+/* Text and Listen Now Button */
+.audio-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic; /* Matches the cursive/italic look in the mockup */
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+.card-action {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #b89669; /* Matches play button color */
+    font-weight: 500;
+}
+
+.action-icon {
+    font-size: 0.8rem;
+}
+/* --- Album Showcase Container --- */
+.album-showcase {
+    position: relative;
+    width: 300px; /* Adjust based on how big you want the cover */
+    margin: 3rem auto; /* Centers it on the page for testing */
+    text-align: center;
+    cursor: pointer;
+}
+
+/* --- The Album Cover --- */
+.album-cover {
+    position: relative;
+    z-index: 2; /* Forces the cover to sit ON TOP of the vinyl */
+    width: 100%;
+    aspect-ratio: 1 / 1; /* Keeps it a perfect square */
+    background-color: #222; /* Fallback color */
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.7); /* Gives it depth */
+    overflow: hidden;
+    border-radius: 4px;
+}
+
+.album-cover img {
+    width: 100%;
+    height: 120%;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- The Vinyl Record (Pure CSS) --- */
+.vinyl-record {
+    position: absolute;
+    z-index: 1; /* Forces the vinyl to sit BEHIND the cover */
+    top: 50%;
+    right: 0; /* Starts tucked completely behind the cover */
+    transform: translateY(-50%); /* Keeps it perfectly centered vertically */
+    width: 240px; 
+    height: 260px;
+    background-color: #111;
+    border-radius: 50%;
+    
+    /* Creates the illusion of vinyl grooves */
+    box-shadow: inset 0 0 0 10px #1a1a1a, 
+                inset 0 0 0 20px #111, 
+                inset 0 0 0 30px #1a1a1a;
+                
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* The magic that makes it slide smoothly instead of jumping */
+    transition: transform 0.6s cubic-bezier(0.25, 0.4, 0.25, 1.5);
+}
+/* --- Premium Scroll Animations --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Enhanced Navigation Hover --- */
+.main-nav a {
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: 0;
+    left: 50%;
+    background-color: #b89669; /* Gold accent */
+    transition: width 0.3s ease, left 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+.main-nav a:hover {
+    color: #b89669;
+    opacity: 1;
+}
+
+/* The colorful label in the center of the vinyl */
+/* The label in the center of the vinyl */
+.vinyl-label {
+    width: 90px;
+    height: 90px;
+    
+    /* Connects directly to your image */
+    background-image: url('images/dancingrain.png'); 
+    
+    /* Ensures the image fills the circle perfectly */
+    background-size: cover;
+    background-position: center;
+    
+    border-radius: 50%;
+    border: 4px solid #0a0a0a;
+}
+
+/* --- THE HOVER ANIMATION --- */
+/* When you hover over the main container, the vinyl transforms */
+.album-showcase:hover .vinyl-record {
+    /* TranslateX moves it to the right. Rotate spins it slightly for realism */
+    transform: translate(45%, -50%) rotate(90deg); 
+}
+
+/* --- Album Title --- */
+.album-title {
+    margin-top: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+/* Make grid responsive on smaller screens */
+@media (max-width: 1024px) {
+    .audio-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+    .audio-grid { grid-template-columns: 1fr; }
+}
+/* --- Hidden YouTube Audio Players --- */
+.hidden-video {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+    z-index: -100;
+}
+
+/* --- Custom Native Audio Player --- */
+.custom-audio-player {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #0a0a0a;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.player-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.control-icon {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.control-icon:hover {
+    color: #d37330; /* The orange/gold accent from the mockup */
+}
+
+.play-btn-large {
+    font-size: 2.5rem;
+    color: #ffffff;
+}
+
+.current-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d37330;
+    margin-bottom: 1.5rem;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 0.8rem;
+    color: #a0a0a0;
+}
+
+.progress-bar-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#seek-slider {
+    width: 100%;
+    appearance: none;
+    background: #333;
+    height: 4px;
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+#seek-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #d37330;
+    cursor: pointer;
+}
+
+/* --- Custom Native Audio Player --- */
+.custom-audio-player {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: transparent; /* Removed the dark box */
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.player-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* The separator line */
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.control-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.control-icon:hover {
+    opacity: 1;
+}
+
+.play-btn-large {
+    opacity: 1;
+}
+
+.current-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #d37330;
+    margin-bottom: 1.5rem;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.progress-bar-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#seek-slider {
+    width: 100%;
+    appearance: none;
+    background: #444; /* Thin gray line */
+    height: 2px; 
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+#seek-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 0px; /* Hides the bulky circle to match his screenshot */
+    height: 0px;
+}
+
+/* Playlist Styling */
+/* --- Custom Native Audio Player --- */
+.custom-audio-player {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: transparent; /* Removed the dark box */
+    padding: 0;
+    border: none;
+    box-shadow: none;
+}
+
+.player-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1); /* The separator line */
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.control-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.control-icon:hover {
+    opacity: 1;
+}
+
+.play-btn-large {
+    opacity: 1;
+}
+
+.current-title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #d37330;
+    margin-bottom: 1.5rem;
+}
+
+/* Progress Bar Styling */
+.progress-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.progress-bar-wrapper {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#seek-slider {
+    width: 100%;
+    appearance: none;
+    background: #444; /* Thin gray line */
+    height: 2px; 
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+}
+
+#seek-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 0px; /* Hides the bulky circle to match his screenshot */
+    height: 0px;
+}
+
+/* Playlist Styling */
+.playlist-container {
+    list-style: none;
+    max-height: none;
+    overflow-y: visible;
+    padding-top: 1rem;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.playlist-item:hover {
+    background: rgba(255,255,255,0.02);
+}
+
+.track-number {
+    width: 40px;
+    text-align: left;
+    color: #666;
+    font-weight: 500;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+.track-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.track-info .title {
+    font-weight: 500;
+    font-size: 1rem;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-bottom: 0.2rem;
+}
+
+.track-info .artist {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+.track-duration {
+    font-size: 0.85rem;
+    color: #888;
+    padding-left: 1rem;
+}
+
+/* Active Track State */
+.playlist-item.active .track-info .title {
+    color: #d37330;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  background: #050505;
+  color: #fff;
+}
+
+.bg-darker {
+  background: #020202;
+}
+
+.site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 4rem;
+  z-index: 10;
+}
+
+.logo {
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 3rem;
+}
+
+.main-nav a {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  opacity: 0.8;
+  padding-bottom: 5px;
+  transition: 0.3s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 1px;
+  bottom: 0;
+  left: 50%;
+  background: #b89669;
+  transition: 0.3s ease;
+}
+
+.main-nav a:hover {
+  color: #b89669;
+  opacity: 1;
+}
+
+.main-nav a:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+.music-page-content {
+  min-height: 100vh;
+  padding-top: 120px;
+  background-image: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.95)), url("images/hero2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.content-section {
+  padding: 8rem 4rem;
+}
+
+.section-title {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 4rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.album-layout {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.album-art-wrap {
+  position: sticky;
+  top: 140px;
+  
+}
+
+.album-cover-img {
+  width: 100%;
+  aspect-ratio: 1.5 / 1.2;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.8);
+}
+
+.custom-audio-player {
+  width: 100%;
+}
+
+.album-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+}
+
+.album-artist {
+  color: #b89669;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  margin-bottom: 2.5rem;
+}
+
+.player-header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+  margin-bottom: 1rem;
+}
+
+.control-buttons {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.control-icon {
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.control-icon:hover {
+  opacity: 1;
+  color: #b89669;
+}
+
+.play-btn-large {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-btn-large:hover {
+  color: #000;
+  transform: scale(1.05);
+}
+
+.current-title {
+  font-size: 1rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #d37330;
+  margin-bottom: 1.5rem;
+}
+
+.progress-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: #888;
+  font-size: 0.75rem;
+}
+
+#seek-slider {
+  width: 100%;
+  appearance: none;
+  background: #444;
+  height: 3px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+#seek-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #b89669;
+}
+
+.playlist-container {
+  list-style: none;
+}
+
+.playlist-item {
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.playlist-item:hover {
+  background: rgba(255,255,255,0.03);
+}
+
+.track-number {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.track-title {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.track-artist {
+  color: #777;
+  font-size: 0.78rem;
+  margin-top: 0.25rem;
+}
+
+.track-duration {
+  color: #777;
+  font-size: 0.85rem;
+}
+
+.playlist-item.active .track-title,
+.playlist-item.active .track-number {
+  color: #b89669;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.site-footer {
+  padding: 4rem;
+  background: #000;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-logo {
+  margin-bottom: 2rem;
+}
+
+.copyright {
+  font-size: 0.7rem;
+  color: #555;
+  letter-spacing: 1px;
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    padding: 1.5rem;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .main-nav ul {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .content-section {
+    padding: 6rem 1.5rem;
+  }
+
+  .album-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .album-art-wrap {
+    position: static;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 2.4rem;
+  }
+
+  .album-heading {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .album-artist {
+    text-align: center;
+  }
+}

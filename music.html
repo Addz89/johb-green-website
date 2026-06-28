@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Music Only | Johb Ashar</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-darker">
+
+  <header class="site-header">
+    <div class="logo">JOHB ASHAR</div>
+
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html#music-videos">Music Videos</a></li>
+        <li><a href="music.html">Music Only</a></li>
+        <li><a href="index.html#narratives">Narratives</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="music-page-content">
+    <section class="content-section reveal">
+      <h1 class="section-title text-center">The Soundscapes</h1>
+
+      <div class="album-layout">
+        <div class="album-art-wrap">
+          <img src="albums/1623/cover.png" alt="1623 Album Cover" class="album-cover-img" />
+        </div>
+
+        <div class="custom-audio-player" data-album="1623">
+  <h2 class="album-heading">1623</h2>
+  <p class="album-artist">Johb Ashar</p>
+
+  <div class="player-header">
+    <div class="control-buttons">
+      <button class="prev-btn control-icon" aria-label="Previous track">⏮</button>
+      <button class="play-pause-btn control-icon play-btn-large" aria-label="Play or pause">▶</button>
+      <button class="next-btn control-icon" aria-label="Next track">⏭</button>
+    </div>
+
+    <h3 class="current-track-title current-title">Sixteen Twenty Three</h3>
+
+    <div class="progress-container">
+      <span class="current-time">0:00</span>
+      <input type="range" class="seek-slider" value="0" min="0" max="100" step="1">
+      <span class="duration-time">0:00</span>
+    </div>
+  </div>
+
+  <ul class="playlist-container"></ul>
+
+  <audio class="native-audio" preload="none"></audio>
+</div>
+      </div>
+    </section>
+
+<section class="content-section reveal album-section">
+  <div class="album-layout">
+
+    <div class="album-art-wrap">
+      <img src="albums/Another Victory for the Worm/cover.png" style="display: block;" alt="Another Victory for the Worm Cover" class="album-cover-img">
+    </div>
+
+    <div class="custom-audio-player" data-album="another-victory">
+      <h2 class="album-heading">Another Victory for the Worm</h2>
+      <p class="album-artist">Johb Ashar</p>
+
+      <div class="player-header">
+        <div class="control-buttons">
+          <button class="prev-btn control-icon">⏮</button>
+          <button class="play-pause-btn control-icon play-btn-large">▶</button>
+          <button class="next-btn control-icon">⏭</button>
+        </div>
+
+        <h3 class="current-track-title current-title">The Victim</h3>
+
+        <div class="progress-container">
+          <span class="current-time">0:00</span>
+          <input type="range" class="seek-slider" value="0" min="0" max="100" step="1">
+          <span class="duration-time">0:00</span>
+        </div>
+      </div>
+
+      <ul class="playlist-container"></ul>
+
+      <audio class="native-audio" preload="none"></audio>
+    </div>
+
+  </div>
+</section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="logo footer-logo">JOHB ASHAR</div>
+    <p class="copyright">&copy; 2026 Johb Ashar. All Rights Reserved. Designed by Moxi Corp Studio.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
