@@ -112,17 +112,45 @@ let activeNativePlayBtn = null;
 let activeAlbumLayout = null;
 
 const ICONS = {
-    play: `<svg class="player-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>`,
-    pause: `<svg class="player-icon" viewBox="0 0 24 24"><path d="M6 5h4v14H6zM14 5h4v14h-4z"></path></svg>`,
-    prev: `<svg class="player-icon" viewBox="0 0 24 24"><path d="M6 5h2v14H6zM9 12l9 7V5z"></path></svg>`,
-    next: `<svg class="player-icon" viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM15 12L6 19V5z"></path></svg>`,
-    playlistPlay: `<svg class="track-play-icon" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>`
+    play: `
+        <svg class="player-svg play-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"></path>
+        </svg>
+    `,
+    pause: `
+        <svg class="player-svg pause-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 5h4v14H6z"></path>
+            <path d="M14 5h4v14h-4z"></path>
+        </svg>
+    `,
+    prev: `
+        <svg class="player-svg small-player-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 5h2v14H6z"></path>
+            <path d="M18 6v12l-9-6z"></path>
+        </svg>
+    `,
+    next: `
+        <svg class="player-svg small-player-svg" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M16 5h2v14h-2z"></path>
+            <path d="M6 6v12l9-6z"></path>
+        </svg>
+    `,
+    playlistPlay: `
+        <svg class="track-play-icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5v14l11-7z"></path>
+        </svg>
+    `
 };
 
 function pauseNativeAudio() {
     if (activeNativeAudio) {
         activeNativeAudio.pause();
-        if (activeNativePlayBtn) activeNativePlayBtn.innerHTML = ICONS.play;
+        if (activeNativePlayBtn) {
+            activeNativePlayBtn.innerHTML = ICONS.play;
+            activeNativePlayBtn.setAttribute("aria-label", "Play");
+        }
+        const activePlayer = activeNativeAudio.closest ? activeNativeAudio.closest(".custom-audio-player") : null;
+        if (activePlayer) activePlayer.classList.remove("is-playing");
         if (activeAlbumLayout) activeAlbumLayout.classList.remove('is-playing');
     }
 }
@@ -440,22 +468,31 @@ function setupNativeAudioPlayers() {
             return;
         }
 
-        const albumLayout = player.closest(".album-layout");
-        const audio = albumLayout ? albumLayout.querySelector(".native-audio") : null;
-        const playlistContainer = albumLayout ? albumLayout.querySelector(".playlist-container") : null;
+const albumLayout = player.closest(".album-layout");
+const audio = albumLayout ? albumLayout.querySelector(".native-audio") : null;
+const playlistContainer = albumLayout ? albumLayout.querySelector(".playlist-container") : null;
 
-        const playPauseBtn = player.querySelector(".play-pause-btn");
-        const prevBtn = player.querySelector(".prev-btn");
-        const nextBtn = player.querySelector(".next-btn");
-        const seekSlider = player.querySelector(".seek-slider");
-        const currentTimeEl = player.querySelector(".current-time");
-        const durationTimeEl = player.querySelector(".duration-time");
-        const currentTitleEl = player.querySelector(".current-track-title");
+const playPauseBtn = player.querySelector(".play-pause-btn");
+const prevBtn = player.querySelector(".prev-btn");
+const nextBtn = player.querySelector(".next-btn");
+const seekSlider = player.querySelector(".seek-slider");
+const currentTimeEl = player.querySelector(".current-time");
+const durationTimeEl = player.querySelector(".duration-time");
+const currentTitleEl = player.querySelector(".current-track-title");
 
-        if (!albumLayout || !audio || !playlistContainer || !playPauseBtn || !prevBtn || !nextBtn || !seekSlider || !currentTimeEl || !durationTimeEl || !currentTitleEl) return;
+if (!albumLayout || !audio || !playlistContainer || !playPauseBtn || !prevBtn || !nextBtn || !seekSlider || !currentTimeEl || !durationTimeEl || !currentTitleEl) return;
 
-        let currentTrackIndex = 0;
-        let isPlaying = false;
+/* ADD THIS HERE */
+playPauseBtn.innerHTML = ICONS.play;
+prevBtn.innerHTML = ICONS.prev;
+nextBtn.innerHTML = ICONS.next;
+
+playPauseBtn.setAttribute("aria-label", "Play");
+prevBtn.setAttribute("aria-label", "Previous track");
+nextBtn.setAttribute("aria-label", "Next track");
+
+let currentTrackIndex = 0;
+let isPlaying = false;
 
         function formatTime(seconds) {
             if (isNaN(seconds) || seconds === Infinity) return "0:00";
@@ -465,7 +502,8 @@ function setupNativeAudioPlayers() {
         }
 
         function updatePlayButton() {
-            playPauseBtn.innerHTML = audio.paused ? '<i class="fa-solid fa-play"></i>' : '<i class="fa-solid fa-pause"></i>';
+            playPauseBtn.innerHTML = audio.paused ? ICONS.play : ICONS.pause;
+            playPauseBtn.setAttribute("aria-label", audio.paused ? "Play" : "Pause");
         }
 
         function loadPlaylist() {
@@ -479,7 +517,7 @@ function setupNativeAudioPlayers() {
 
                 li.innerHTML = `
                     <div class="track-number">
-                        ${index === currentTrackIndex ? '<i class="fa-solid fa-play" style="color: #d37330;"></i>' : index + 1}
+                        <span class="track-index">${index + 1}</span>
                     </div>
                     <div class="track-info">
                         <div class="title">${track.title}</div>
@@ -527,10 +565,24 @@ function setupNativeAudioPlayers() {
                 pauseYouTubeAudio();
             }
 
-            audio.play().then(() => {
+            audio.preload = "auto";
+            const playPromise = audio.play();
+
+            if (!playPromise || typeof playPromise.then !== "function") {
                 isPlaying = true;
                 updatePlayButton();
-                albumLayout.classList.add("is-playing");
+                if (albumLayout) albumLayout.classList.add("is-playing");
+                player.classList.add("is-playing");
+                activeNativeAudio = audio;
+                activeNativePlayBtn = playPauseBtn;
+                activeAlbumLayout = albumLayout;
+                return;
+            }
+
+            playPromise.then(() => {
+                isPlaying = true;
+                updatePlayButton();
+                if (albumLayout) albumLayout.classList.add("is-playing");
                 player.classList.add("is-playing");
                 activeNativeAudio = audio;
                 activeNativePlayBtn = playPauseBtn;
@@ -546,7 +598,7 @@ function setupNativeAudioPlayers() {
             audio.pause();
             isPlaying = false;
             updatePlayButton();
-            albumLayout.classList.remove("is-playing");
+            if (albumLayout) albumLayout.classList.remove("is-playing");
             player.classList.remove("is-playing");
         }
 
@@ -582,6 +634,22 @@ function setupNativeAudioPlayers() {
         seekSlider.addEventListener("input", () => {
             if (!isNaN(audio.duration) && audio.duration > 0) {
                 audio.currentTime = audio.duration * (seekSlider.value / 100);
+            }
+        });
+
+        audio.addEventListener("play", () => {
+            isPlaying = true;
+            updatePlayButton();
+            player.classList.add("is-playing");
+            if (albumLayout) albumLayout.classList.add("is-playing");
+        });
+
+        audio.addEventListener("pause", () => {
+            if (!audio.ended) {
+                isPlaying = false;
+                updatePlayButton();
+                player.classList.remove("is-playing");
+                if (albumLayout) albumLayout.classList.remove("is-playing");
             }
         });
 

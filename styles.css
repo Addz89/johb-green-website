@@ -132,6 +132,224 @@ body {
 .copyright { color: #444; font-size: 0.75rem; letter-spacing: 2px; }
 
 /* =========================================================
+   PLAYER CONTROL ICON FIX
+   ========================================================= */
+
+.control-buttons {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.7rem !important;
+    margin-bottom: 1.7rem !important;
+}
+
+.control-icon {
+    width: 52px !important;
+    height: 52px !important;
+    min-width: 52px !important;
+    min-height: 52px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(184, 150, 105, 0.45) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    padding: 0 !important;
+    cursor: pointer !important;
+    line-height: 1 !important;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55) !important;
+}
+
+.play-btn-large {
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    background: linear-gradient(145deg, #ffffff, #dedede) !important;
+    color: #000000 !important;
+    border: 1px solid rgba(255, 255, 255, 0.9) !important;
+}
+
+.player-svg {
+    width: 28px !important;
+    height: 28px !important;
+    display: block !important;
+    fill: currentColor !important;
+    color: inherit !important;
+    pointer-events: none !important;
+}
+
+.play-btn-large .player-svg {
+    width: 36px !important;
+    height: 36px !important;
+    color: #000000 !important;
+    fill: #000000 !important;
+}
+
+.small-player-svg {
+    width: 26px !important;
+    height: 26px !important;
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+.prev-btn:hover,
+.next-btn:hover {
+    background: rgba(184, 150, 105, 0.22) !important;
+    color: #b89669 !important;
+    border-color: rgba(184, 150, 105, 0.75) !important;
+    transform: scale(1.08);
+}
+
+.prev-btn:hover .small-player-svg,
+.next-btn:hover .small-player-svg {
+    color: #b89669 !important;
+    fill: #b89669 !important;
+}
+
+.play-btn-large:hover {
+    transform: scale(1.08);
+    background: #ffffff !important;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .control-buttons {
+        gap: 1.2rem !important;
+    }
+
+    .control-icon {
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
+    }
+
+    .play-btn-large {
+        width: 74px !important;
+        height: 74px !important;
+        min-width: 74px !important;
+        min-height: 74px !important;
+    }
+
+    .small-player-svg {
+        width: 23px !important;
+        height: 23px !important;
+    }
+
+    .play-btn-large .player-svg {
+        width: 32px !important;
+        height: 32px !important;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .control-buttons {
+        gap: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .control-icon {
+        width: 46px;
+        height: 46px;
+    }
+
+    .play-btn-large {
+        width: 76px;
+        height: 76px;
+    }
+
+    .player-symbol {
+        font-size: 1.25rem;
+    }
+
+    .play-btn-large .player-symbol {
+        font-size: 1.85rem;
+    }
+
+    .play-btn-large .pause-symbol {
+        font-size: 1.95rem;
+    }
+
+    .current-title {
+        font-size: 0.95rem;
+        line-height: 1.5;
+        padding: 0 0.5rem;
+    }
+
+    .progress-container {
+        gap: 0.65rem;
+        font-size: 0.75rem;
+    }
+
+    .seek-slider {
+        height: 5px;
+    }
+
+    .playlist-item {
+        min-height: 72px;
+        padding: 1rem 0.85rem;
+        border-radius: 12px;
+    }
+
+    .track-info .title,
+    .playlist-item .title {
+        font-size: 0.92rem;
+        line-height: 1.35;
+        letter-spacing: 0.5px;
+    }
+
+    .track-info .artist,
+    .playlist-item .artist {
+        font-size: 0.78rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .custom-audio-player {
+        padding: 2rem 1rem;
+    }
+
+    .control-buttons {
+        gap: 1rem;
+    }
+
+    .control-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .play-btn-large {
+        width: 72px;
+        height: 72px;
+    }
+
+    .small-symbol {
+        font-size: 1.1rem;
+    }
+
+    .play-btn-large .player-symbol {
+        font-size: 1.75rem;
+    }
+
+    .album-heading {
+        font-size: 2.1rem;
+    }
+
+    .album-artist {
+        font-size: 0.75rem;
+        letter-spacing: 2.5px;
+    }
+
+    .playlist-container {
+        max-height: 340px;
+    }
+}
+
+/* =========================================================
    ABOUT PAGE FIX
    ========================================================= */
 
@@ -326,4 +544,174 @@ body {
 
 .audio-fallback a:hover {
   text-decoration: underline;
+}
+
+/* =========================================================
+   FIXED AUDIO PLAYER BUTTONS - DESKTOP + MOBILE
+   ========================================================= */
+.control-buttons {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1.55rem !important;
+    margin-bottom: 1.7rem !important;
+}
+
+.control-icon {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    -webkit-tap-highlight-color: transparent;
+    width: 50px !important;
+    height: 50px !important;
+    min-width: 50px !important;
+    min-height: 50px !important;
+    padding: 0 !important;
+    border: 1px solid rgba(184, 150, 105, 0.35) !important;
+    border-radius: 50% !important;
+    background: rgba(255, 255, 255, 0.075) !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    opacity: 1 !important;
+    line-height: 1 !important;
+    font-family: "Montserrat", sans-serif !important;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45) !important;
+    transition: transform 0.22s ease, background 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease !important;
+}
+
+.play-btn-large {
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    background: radial-gradient(circle at 35% 25%, #ffffff 0%, #f2f2f2 35%, #d4d4d4 100%) !important;
+    color: #050505 !important;
+    border: 1px solid rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 18px 45px rgba(0,0,0,0.72), 0 0 35px rgba(184,150,105,0.22) !important;
+}
+
+.player-symbol {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    height: 100% !important;
+    color: inherit !important;
+    font-size: 1.42rem !important;
+    line-height: 1 !important;
+    pointer-events: none !important;
+    transform: translateX(1px);
+}
+
+.play-btn-large .player-symbol {
+    font-size: 2.05rem !important;
+    color: #050505 !important;
+    transform: translateX(2px);
+}
+
+.play-btn-large .pause-symbol {
+    font-size: 2.05rem !important;
+    font-weight: 800 !important;
+    transform: translateX(0);
+}
+
+.small-symbol {
+    font-size: 1.22rem !important;
+    transform: translateX(0);
+}
+
+.control-icon:hover,
+.control-icon:focus-visible {
+    background: rgba(184, 150, 105, 0.24) !important;
+    border-color: rgba(184, 150, 105, 0.75) !important;
+    color: #b89669 !important;
+    transform: scale(1.08) !important;
+    outline: none !important;
+}
+
+.play-btn-large:hover,
+.play-btn-large:focus-visible {
+    color: #050505 !important;
+    background: #ffffff !important;
+}
+
+.album-layout.is-playing .play-btn-large {
+    box-shadow: 0 18px 45px rgba(0,0,0,0.75), 0 0 48px rgba(184,150,105,0.55) !important;
+}
+
+.track-number .track-index {
+    color: inherit;
+}
+
+@media (max-width: 768px) {
+    .control-buttons {
+        gap: 1.15rem !important;
+        margin-bottom: 1.45rem !important;
+    }
+
+    .control-icon {
+        width: 46px !important;
+        height: 46px !important;
+        min-width: 46px !important;
+        min-height: 46px !important;
+    }
+
+    .play-btn-large {
+        width: 76px !important;
+        height: 76px !important;
+        min-width: 76px !important;
+        min-height: 76px !important;
+    }
+
+    .player-symbol {
+        font-size: 1.25rem !important;
+    }
+
+    .play-btn-large .player-symbol {
+        font-size: 1.85rem !important;
+    }
+
+    .play-btn-large .pause-symbol {
+        font-size: 1.9rem !important;
+    }
+
+    .current-title {
+        font-size: 0.95rem !important;
+        line-height: 1.45 !important;
+        padding: 0 0.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .control-buttons {
+        gap: 0.95rem !important;
+    }
+
+    .control-icon {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+
+    .play-btn-large {
+        width: 72px !important;
+        height: 72px !important;
+        min-width: 72px !important;
+        min-height: 72px !important;
+    }
+
+    .small-symbol {
+        font-size: 1.08rem !important;
+    }
+
+    .play-btn-large .player-symbol {
+        font-size: 1.75rem !important;
+    }
+
+    .play-btn-large .pause-symbol {
+        font-size: 1.78rem !important;
+    }
 }
