@@ -1514,20 +1514,18 @@ players.forEach(player => {
         }
 
 function loadTrack(index) {
-    const track = trackList[index];
-    if (!track) return;
-
     audio.pause();
-    audio.src = cleanAudioUrl(track.file);
-    audio.load();
 
-    currentTitleEl.innerText = track.title;
+    currentTrackIndex = index;
+    const track = trackList[currentTrackIndex];
+
+    audio.preload = "metadata";
+    audio.src = track.file;
+
+    currentTitleEl.textContent = track.title;
+    currentTimeEl.textContent = "0:00";
+    durationTimeEl.textContent = "0:00";
     seekSlider.value = 0;
-    currentTimeEl.innerText = "0:00";
-
-    if (durationTimeEl) {
-        durationTimeEl.innerText = "0:00";
-    }
 
     loadPlaylist();
 
@@ -1539,44 +1537,22 @@ function playTrack() {
         pauseNativeAudio();
     }
 
-    if (typeof pauseYouTubeAudio === "function") {
-        pauseYouTubeAudio();
-    }
-
     const playPromise = audio.play();
 
-    if (playPromise && typeof playPromise.then === "function") {
+    if (playPromise !== undefined) {
         playPromise
             .then(() => {
                 isPlaying = true;
                 playPauseBtn.innerHTML = ICONS.pause;
-
-                if (albumLayout) {
-                    albumLayout.classList.add("is-playing");
-                }
-
                 player.classList.add("is-playing");
+                if (albumLayout) albumLayout.classList.add("is-playing");
 
                 activeNativeAudio = audio;
                 activeNativePlayBtn = playPauseBtn;
                 activeAlbumLayout = albumLayout;
-
-                const activeVisualizer = playlistContainer.querySelector(".playing-visualizer");
-                if (activeVisualizer) {
-                    activeVisualizer.classList.add("active");
-                }
             })
-            .catch((error) => {
-                console.warn("Audio failed to play:", audio.src, error);
-
-                isPlaying = false;
-                playPauseBtn.innerHTML = ICONS.play;
-
-                if (albumLayout) {
-                    albumLayout.classList.remove("is-playing");
-                }
-
-                player.classList.remove("is-playing");
+            .catch(error => {
+                console.warn("Mobile audio failed:", audio.src, error);
             });
     }
 }
