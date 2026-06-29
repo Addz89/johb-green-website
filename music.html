@@ -729,13 +729,39 @@
         </div>
       </div>
     </section>
+
+      <!-- Fixed Bottom Music Bar -->
+<div class="bottom-music-bar" id="bottomMusicBar" aria-hidden="true">
+  <div class="bottom-track-info">
+    <img src="images/logo.png" alt="Album cover" class="bottom-cover" id="bottomCover">
+
+    <div class="bottom-text">
+      <div class="bottom-song-title" id="bottomSongTitle">No song playing</div>
+      <div class="bottom-album-title" id="bottomAlbumTitle">Johb Ashar</div>
+    </div>
+  </div>
+
+  <div class="bottom-controls">
+    <button class="bottom-btn" id="bottomPrevBtn" aria-label="Previous track">⏮</button>
+    <button class="bottom-btn bottom-play-btn" id="bottomPlayBtn" aria-label="Play or pause">▶</button>
+    <button class="bottom-btn" id="bottomNextBtn" aria-label="Next track">⏭</button>
+  </div>
+
+  <div class="bottom-progress-wrap">
+    <span id="bottomCurrentTime">0:00</span>
+    <input type="range" id="bottomSeekSlider" class="bottom-seek-slider" value="0" min="0" max="100" step="1">
+    <span id="bottomDuration">0:00</span>
+  </div>
+</div>
+    
   </main>
+
 
   <footer class="site-footer">
     <div class="logo footer-logo">JOHB ASHAR</div>
     <p class="copyright">&copy; 2026 Johb Ashar. All Rights Reserved. Designed by Moxi Corp Studio.</p>
   </footer>
 
-<script src="script.js?v=800"></script>
+<script src="script.js?v=1200"></script>
 </body>
 </html>
