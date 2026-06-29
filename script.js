@@ -1452,7 +1452,7 @@ function setupNativeAudioPlayers() {
         file: "https://github.com/Addz89/johb-green-website/releases/download/audio-symphony-4-portrait/09.Not.Worthy.Final.m4a",
         artist: "Johb Ashar"
     }
-],
+]
     };
 
 players.forEach(player => {
