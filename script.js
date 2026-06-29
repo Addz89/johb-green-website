@@ -128,15 +128,36 @@ function pauseNativeAudio() {
 
 // FIX: Convert raw GitHub to CDN so browser plays it.
 function cleanAudioUrl(url) {
-    const githubRawPrefix = "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/";
+    if (!url) return "";
+
+    // Allows you to paste normal GitHub file-page links like:
+    // https://github.com/Addz89/johb-green-website/blob/main/albums/1623/01%20Sixteen%20Twenty%20Three.m4a
+    // The audio player converts them to the real media URL that browsers can try to play.
+    const githubBlobPrefix = "https://github.com/Addz89/johb-green-website/blob/main/";
+    const githubRawRefsPrefix = "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/";
+    const githubRawMainPrefix = "https://github.com/Addz89/johb-green-website/raw/main/";
+    const rawGithubPrefix = "https://raw.githubusercontent.com/Addz89/johb-green-website/main/";
+    const mediaGithubPrefix = "https://media.githubusercontent.com/media/Addz89/johb-green-website/main/";
     const jsDelivrPrefix = "https://cdn.jsdelivr.net/gh/Addz89/johb-green-website@main/";
 
-    if (url.startsWith(githubRawPrefix)) {
-        return url.replace(githubRawPrefix, "");
+    if (url.startsWith(githubBlobPrefix)) {
+        return url.replace(githubBlobPrefix, mediaGithubPrefix);
+    }
+
+    if (url.startsWith(githubRawRefsPrefix)) {
+        return url.replace(githubRawRefsPrefix, mediaGithubPrefix);
+    }
+
+    if (url.startsWith(githubRawMainPrefix)) {
+        return url.replace(githubRawMainPrefix, mediaGithubPrefix);
+    }
+
+    if (url.startsWith(rawGithubPrefix)) {
+        return url.replace(rawGithubPrefix, mediaGithubPrefix);
     }
 
     if (url.startsWith(jsDelivrPrefix)) {
-        return url.replace(jsDelivrPrefix, "");
+        return url.replace(jsDelivrPrefix, mediaGithubPrefix);
     }
 
     return url;
@@ -151,7 +172,7 @@ function setupNativeAudioPlayers() {
 "1623": [
     {
         title: "Sixteen Twenty Three",
-        file: "https://github.com/Addz89/johb-green-website/blob/main/albums/1623/01%20Sixteen%20Twenty%20Three.m4a",
+        file: "https://github.com/Addz89/johb-green-website/releases/download/audio-v1/01.Sixteen.Twenty.Three.m4a",
         artist: "Johb Ashar"
     },
     {
