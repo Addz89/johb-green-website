@@ -1534,6 +1534,17 @@ players.forEach(player => {
         audio.controls = true;
         audio.classList.add("show-native-audio");
     }
+    function getPlayableAudioUrl(url) {
+    return url
+        .replace(
+            "https://github.com/Addz89/johb-green-website/blob/main/",
+            "https://media.githubusercontent.com/media/Addz89/johb-green-website/main/"
+        )
+        .replace(
+            "https://github.com/Addz89/johb-green-website/raw/refs/heads/main/",
+            "https://media.githubusercontent.com/media/Addz89/johb-green-website/main/"
+        );
+}
 
     function hideFallback() {
         fallback.classList.remove("show");
@@ -1647,36 +1658,32 @@ players.forEach(player => {
         return url;
     }
 
-    function playTrack() {
-        const url = prepareTrackForPlayback();
-        if (!url) return;
-
-        if (activeNativeAudio && activeNativeAudio !== audio) {
-            pauseNativeAudio();
-        }
-
-        const playPromise = audio.play();
-
-        if (playPromise && typeof playPromise.then === "function") {
-            playPromise
-                .then(() => {
-                    activeNativeAudio = audio;
-                    activeNativePlayBtn = playPauseBtn;
-                    activeAlbumLayout = albumLayout;
-                    setPlaying(true);
-                })
-                .catch(error => {
-                    console.warn("Audio failed to play:", url, error);
-                    setPlaying(false);
-                    showFallback(url);
-                });
-        } else {
-            activeNativeAudio = audio;
-            activeNativePlayBtn = playPauseBtn;
-            activeAlbumLayout = albumLayout;
-            setPlaying(true);
-        }
+function playTrack() {
+    if (activeNativeAudio && activeNativeAudio !== audio) {
+        pauseNativeAudio();
     }
+
+    audio.src = getPlayableAudioUrl(trackList[currentTrackIndex].file);
+
+    const playPromise = audio.play();
+
+    if (playPromise !== undefined) {
+        playPromise
+            .then(() => {
+                isPlaying = true;
+                playPauseBtn.innerHTML = ICONS.pause;
+                player.classList.add("is-playing");
+                if (albumLayout) albumLayout.classList.add("is-playing");
+
+                activeNativeAudio = audio;
+                activeNativePlayBtn = playPauseBtn;
+                activeAlbumLayout = albumLayout;
+            })
+            .catch(error => {
+                console.warn("Mobile audio failed:", audio.src, error);
+            });
+    }
+}
 
     function pauseTrack() {
         audio.pause();
