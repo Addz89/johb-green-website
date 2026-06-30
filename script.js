@@ -67,7 +67,29 @@ if (heroAudioBars) {
     const rightArrow = document.querySelector('.right-arrow');
 
     if (heroSection && leftArrow && rightArrow) {
-        const images = ['images/hero.png', 'images/hero2.jpg', 'images/logo.png'];
+        const images = ['images/hero.png',
+        'images/hero2.jpg',
+        'images/logo.png',
+
+        'images/50s_enamel_sign_of_A_vast_vert 1.jpeg',
+        'images/50s_enamel_sign_of_A_vast_vert 2.jpeg',
+        'images/50s_enamel_sign_of_A_vast_vert.jpeg',
+        'images/A_vast_vertical_oil_painting_i 31.jpeg',
+        'images/Abstract_disturbing_confrontin 7.jpeg',
+        'images/channels4_profile.jpg',
+        'images/cursed_photo_of_Abstract_distu 3.jpeg',
+        'images/cursed_photo_of_Abstract_distu 21.jpeg',
+        'images/download (3).jpeg',
+        'images/download (5).jpeg',
+        'images/download (18).jpeg',
+        'images/download (21).jpeg',
+        'images/download (23).jpeg',
+        'images/download (24).jpeg',
+        'images/download (37).jpeg',
+        'images/download (40).jpeg',
+        'images/download (42).jpeg',
+        'images/download.png',
+        'images/JOB review artwork.png'];
         let currentIndex = 0;
         function updateBackgroundImage() {
             heroSection.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url('${images[currentIndex]}')`;
