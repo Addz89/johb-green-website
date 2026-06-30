@@ -6,20 +6,32 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Index Hero Animated Music Ring ---
+// --- Index Hero Animated Music Ring - Mobile Optimised ---
 const heroAudioBars = document.getElementById("heroAudioBars");
 
 if (heroAudioBars) {
-    const totalBars = 120;
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    // Desktop can handle more bars. iPhone needs less for smooth animation.
+    const totalBars = isMobile ? 56 : 110;
 
     heroAudioBars.innerHTML = "";
+
+    const fragment = document.createDocumentFragment();
 
     for (let i = 0; i < totalBars; i++) {
         const bar = document.createElement("span");
         bar.className = "hero-audio-bar";
 
         const angle = (360 / totalBars) * i;
-        const randomHeight = 18 + Math.random() * 42;
-        const randomSpeed = 0.8 + Math.random() * 2.4;
+        const randomHeight = isMobile
+            ? 12 + Math.random() * 24
+            : 18 + Math.random() * 42;
+
+        const randomSpeed = isMobile
+            ? 1.6 + Math.random() * 1.8
+            : 0.9 + Math.random() * 2.2;
+
         const randomDelay = Math.random() * -2;
 
         bar.style.setProperty("--bar-angle", `${angle}deg`);
@@ -27,8 +39,10 @@ if (heroAudioBars) {
         bar.style.setProperty("--bar-speed", `${randomSpeed}s`);
         bar.style.setProperty("--bar-delay", `${randomDelay}s`);
 
-        heroAudioBars.appendChild(bar);
+        fragment.appendChild(bar);
     }
+
+    heroAudioBars.appendChild(fragment);
 }
 
     // --- Circular Equalizer Logic (For About Page) ---
