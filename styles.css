@@ -33,7 +33,7 @@ body {
 .main-nav a:hover::after { width: 100%; }
 
 /* ---------- Hero (For Index) ---------- */
-.hero { min-height: 100vh; width: 100%; position: relative; display: flex; align-items: center; justify-content: center; background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("images/hero.png"); background-size: cover; background-position: center; background-repeat: no-repeat; animation: bgPan 20s infinite alternate linear; }
+.hero { min-height: 100vh; width: 100%; position: relative; display: flex; align-items: center; justify-content: center; background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.8)), url("images/logo.png"); background-size: cover; background-position: center; background-repeat: no-repeat; animation: bgPan 20s infinite alternate linear; }
 .hero-content { position: relative; z-index: 2; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 5rem; animation: float 6s ease-in-out infinite; }
 .hero-content h1 { font-family: "Playfair Display", serif; font-size: 6.5rem; font-weight: 400; margin-bottom: 1rem; letter-spacing: 2px; text-shadow: 0 15px 30px rgba(0,0,0,0.8); }
 .hero-content .subtitle { font-size: 0.9rem; letter-spacing: 8px; text-transform: uppercase; opacity: 0.8; background: linear-gradient(90deg, #d37330, #ffffff, #b89669); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -65,7 +65,7 @@ body {
 .youtube-embed:hover { transform: scale(1.02); border-color: rgba(184, 150, 105, 0.3); }
 
 /* ---------- Music Page Background ---------- */
-.music-page-content { min-height: 100vh; padding-top: 140px; padding-bottom: 8rem; background-image: radial-gradient(circle at 15% 20%, rgba(184, 150, 105, 0.06) 0%, transparent 40%), radial-gradient(circle at 85% 80%, rgba(184, 150, 105, 0.06) 0%, transparent 40%), linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.98)), url("images/hero2.jpg"); background-size: cover; background-position: center; background-attachment: fixed; animation: bgPan 40s infinite alternate linear; }
+.music-page-content { min-height: 100vh; padding-top: 140px; padding-bottom: 8rem; background-image: radial-gradient(circle at 15% 20%, rgba(184, 150, 105, 0.06) 0%, transparent 40%), radial-gradient(circle at 85% 80%, rgba(184, 150, 105, 0.06) 0%, transparent 40%), linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.98)), url("images/logo.png"); background-size: cover; background-position: center; background-attachment: fixed; animation: bgPan 40s infinite alternate linear; }
 
 /* ---------- Elite Layout & Album Art ---------- */
 .album-layout { max-width: 1150px; margin: 0 auto; display: grid; grid-template-columns: 400px 1fr; gap: 4rem; align-items: start; transition: transform 0.5s ease, opacity 0.5s ease; }
@@ -1344,5 +1344,148 @@ body {
 
     .bottom-album-title {
         max-width: 155px !important;
+    }
+}
+/* =========================================================
+   MUSIC VIDEOS PAGE
+   ========================================================= */
+
+.video-page-content {
+    min-height: 100vh;
+    padding-top: 140px;
+    padding-bottom: 8rem;
+    background-image:
+        radial-gradient(circle at 15% 20%, rgba(184, 150, 105, 0.08) 0%, transparent 38%),
+        radial-gradient(circle at 85% 80%, rgba(184, 150, 105, 0.06) 0%, transparent 40%),
+        linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.98)),
+        url("images/logo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.video-intro {
+    max-width: 760px;
+    margin: -2rem auto 0;
+    text-align: center;
+    color: #a8a8a8;
+    font-size: 1rem;
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+}
+
+.video-section {
+    padding: 0 4rem 6rem;
+}
+
+.video-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem;
+}
+
+.video-card {
+    background: rgba(18, 18, 18, 0.62);
+    border: 1px solid rgba(184, 150, 105, 0.22);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.82),
+        0 0 40px rgba(184, 150, 105, 0.05);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(184, 150, 105, 0.55);
+    box-shadow:
+        0 35px 95px rgba(0, 0, 0, 0.9),
+        0 0 45px rgba(184, 150, 105, 0.12);
+}
+
+.video-frame {
+    width: 100%;
+    background: #000000;
+    border-bottom: 1px solid rgba(184, 150, 105, 0.18);
+}
+
+.video-frame video {
+    width: 100%;
+    display: block;
+    aspect-ratio: 16 / 9;
+    background: #000000;
+    outline: none;
+}
+
+.video-info {
+    padding: 1.45rem 1.6rem 1.6rem;
+}
+
+.video-info h2 {
+    font-family: "Playfair Display", serif;
+    font-size: 1.85rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 0.55rem;
+    color: #ffffff;
+}
+
+.video-info p {
+    color: #b89669;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2.8px;
+    font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+    .video-page-content {
+        padding-top: 115px;
+        background-attachment: scroll;
+    }
+
+    .video-section {
+        padding: 0 1rem 4rem;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .video-intro {
+        font-size: 0.9rem;
+        margin-top: -1.5rem;
+        padding: 0 1rem;
+    }
+
+    .video-info {
+        padding: 1rem 1.1rem 1.15rem;
+    }
+
+    .video-info h2 {
+        font-size: 1.45rem;
+    }
+
+    .video-info p {
+        font-size: 0.65rem;
+        letter-spacing: 2.2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-page-content {
+        padding-top: 105px;
+    }
+
+    .video-card {
+        border-radius: 14px;
+    }
+
+    .video-info h2 {
+        font-size: 1.28rem;
     }
 }
