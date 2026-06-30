@@ -147,13 +147,23 @@ function initBottomMusicBar() {
         }
     });
 
-    prevBtn.addEventListener("click", () => {
-        if (activeBottomController) activeBottomController.prev();
-    });
+prevBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
 
-    nextBtn.addEventListener("click", () => {
-        if (activeBottomController) activeBottomController.next();
-    });
+    if (activeBottomController) {
+        activeBottomController.prev();
+    }
+});
+
+nextBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (activeBottomController) {
+        activeBottomController.next();
+    }
+});
 
     seekSlider.addEventListener("input", () => {
         if (!activeBottomController) return;
@@ -308,6 +318,78 @@ function setupNativeAudioPlayers() {
             { title: "CAVE OF REVELATION", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Cave%20of%20Revelation/07%20CAVE%20OF%20REVELATION.m4a", artist: "Johb Ashar" },
             { title: "CDOPST", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Cave%20of%20Revelation/08%20CDOPST.m4a", artist: "Johb Ashar" }
         ],
+        "ex-nihilio": [
+    {
+        title: "Adam",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/01%20Adam.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Eve",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/02%20Eve.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Snake",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/03%20Snake.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Fall",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/04%20Fall.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Humanity",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/05%20Humanity.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Adamah",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/06%20Adamah.wav",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Homo Primus",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/07%20Homo%20Primus.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Havah",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/08%20Havah.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Zoe",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/09%20Zoe.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "The Serpent in the Garden",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/10%20The%20Serpent%20in%20the%20Garden.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "The Tempter",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/11%20The%20Tempter.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Original Sin",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/12%20Original%20Sin.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Image Dei",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/13%20Image%20Dei.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Genesis Six Six",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Ex%20Nihilio/14%20Genesis%20Six%20Six.m4a",
+        artist: "Johb Ashar"
+    }
+],
         "fire": [
             { title: "You Do It For Me", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Fire/01%20You%20Do%20It%20For%20Me.m4a", artist: "Johb Ashar" },
             { title: "Mustard Seed", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Fire/02%20Mustard%20Seed.m4a", artist: "Johb Ashar" },
@@ -575,7 +657,373 @@ function setupNativeAudioPlayers() {
             { title: "The Coming of Darkness", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%204%20-%20PORTRAIT/06%20The%20Coming%20of%20Darkness.m4a", artist: "Johb Ashar" },
             { title: "Light to Feel God", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%204%20-%20PORTRAIT/07%20Light%20to%20Feel%20God.m4a", artist: "Johb Ashar" },
             { title: "Not Worthy Final", file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%204%20-%20PORTRAIT/09%20Not%20Worthy%20Final.m4a", artist: "Johb Ashar" }
-        ]
+        ],
+        "symphony-9-sirenes-et-venin": [
+    {
+        title: "Symphony 9 Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/01%20Symphony%209%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 9 Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/02%20Symphony%209%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 9 Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/04%20Symphony%209%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "La Dominante",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/05%20La%20Dominante.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Reine des Profondeurs",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/06%20Reine%20des%20Profondeurs.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Laucosia, Reinw de Sel",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/07%20Laucosia%2C%20Reinw%20de%20Sel.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "La Douce",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/08%20La%20Douce.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "La Sirene Radieuse",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/09%20La%20Sirene%20Radieuse.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Chant d_Ecume",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/10%20Chant%20d_Ecume.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "La Pleine",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/11%20La%20Pleine.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "La Chant Final",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%209%20-%20Sirenes%20Et%20Venin/12%20La%20Chant%20Final.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"symphony-13-sumud": [
+    {
+        title: "Symphony 13 - Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/01%20Symphony%2013%20-%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/02%20Symphony%2013%20-%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Movement 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/03%20Symphony%2013%20-%20Movement%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/04%20Symphony%2013%20-%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 1 - Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/05%20Symphony%2013%20-%20Variation%201%20-%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 1 - Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/06%20Symphony%2013%20-%20Variation%201%20-%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 1 - Movement 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/07%20Symphony%2013%20-%20Variation%201%20-%20Movement%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 1 - Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/08%20Symphony%2013%20-%20Variation%201%20-%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 2 - Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/09%20Symphony%2013%20-%20Variation%202%20-%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 2 - Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/10%20Symphony%2013%20-%20Variation%202%20-%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 2 - Movement 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/11%20Symphony%2013%20-%20Variation%202%20-%20Movement%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 13 - Variation 2 - Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2013%20Sumud/12%20Symphony%2013%20-%20Variation%202%20-%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"symphony-18-the-age-of-sadness": [
+    {
+        title: "Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2018%20-%20The%20Age%20of%20Sadness/01%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2018%20-%20The%20Age%20of%20Sadness/02%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Movement 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2018%20-%20The%20Age%20of%20Sadness/03%20Movement%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2018%20-%20The%20Age%20of%20Sadness/04%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Without Reason Archetype Complete",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2018%20-%20The%20Age%20of%20Sadness/05%20without%20reason%20archetype%20complete.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"symphony-19-the-heart-that-glows": [
+    {
+        title: "SYMPHONY 19 - PART 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2019%20-%20THE%20HEART%20THAT%20GLOWS/01%20SYMPHONY%2019%20-%20PART%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "SYMPHONY 19 - PART 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2019%20-%20THE%20HEART%20THAT%20GLOWS/02%20SYMPHONY%2019%20-%20PART%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "SYMPHONY 19 - PART 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2019%20-%20THE%20HEART%20THAT%20GLOWS/03%20SYMPHONY%2019%20-%20PART%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "SYMPHONY 19 - PART 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2019%20-%20THE%20HEART%20THAT%20GLOWS/04%20SYMPHONY%2019%20-%20PART%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "APPLEBY ROAD",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/Symphony%2019%20-%20THE%20HEART%20THAT%20GLOWS/05%20APPLEBY%20ROAD.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"the-black-symphony": [
+    {
+        title: "Miserere Mei Deus",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/01%20Miserere%20Mei%20Deus.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Timor Domini Sanctus",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/02%20Timor%20Domini%20Sanctus.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "In Tenebris Amo Te",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/03%20In%20Tenebris%20Amo%20Te.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Atricatus",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/04%20Atricatus.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Christe - Vita ex Morte",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/05%20Christe%20-%20Vita%20ex%20Morte.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 22 - Movement 1",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/06%20Symphony%2022%20-%20Movement%201.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 22 - Movement 2",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/07%20Symphony%2022%20-%20Movement%202.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 22 - Movement 3",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/08%20Symphony%2022%20-%20Movement%203.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 22 - Movement 4",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/09%20Symphony%2022%20-%20Movement%204.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 22 - Movement 5",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Black%20Symphony/10%20Symphony%2022%20-%20Movement%205.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"the-killing-fields-of-palestine": [
+    {
+        title: "White Evil",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/01%20White%20Evil.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Resistance to the Occupation",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/02%20Resistance%20to%20the%20Occupation.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Where are the Children",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/03%20Where%20are%20the%20Children_.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Intent",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/04%20Intent.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Bethlehemm",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/05%20Bethlehem.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Dance at the Grotto",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/06%20Dance%20at%20the%20Grotto.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Dance for the Opressed",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/07%20Dance%20for%20the%20Opressed.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Palestine Sumud",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/08%20Palestine%20Sumud.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Gehenna Symphony",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Killing%20Fields%20of%20Palestine/09%20Gehenna%20Symphony.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"the-logic-of-hell": [
+    {
+        title: "Woe To You",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/01%20Woe%20To%20You.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Hell",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/02%20Hell.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Separation from God",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/03%20Separation%20from%20God.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Desire",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/04%20Desire.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Fall from Grace - Part One Realisation",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/05%20Fall%20from%20Grace%20-%20Part%20One%20Realisation.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Fall from Grace - Part Two Conflict",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/06%20Fall%20from%20Grace%20-%20Part%20Two%20Conflict.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Free Will",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/07%20Free%20Will.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 14_ The Logic of Hell",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Logic%20of%20Hell/08%20Symphony%2014_%20The%20Logic%20of%20Hell.m4a",
+        artist: "Johb Ashar"
+    }
+],
+"the-return": [
+    {
+        title: "Return Of My Soul",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/01%20Return%20Of%20My%20Soul.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "City On a Hill",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/02%20City%20On%20a%20Hill.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "He Wept For Us",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/03%20He%20Wept%20For%20Us.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Monks of Revelation",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/04%20Monks%20of%20Revelation.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Fractured Sky",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/05%20Fractured%20Sky.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Stones of Conflict",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/06%20Stones%20of%20Conflict.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Sacrifice of Sin",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/07%20Sacrifice%20of%20Sin.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "The Entrance",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/08%20The%20Entrance.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Symphony 7 - Complete - The Return",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/09%20Symphony%207%20-%20Complete%20-%20The%20Return.m4a",
+        artist: "Johb Ashar"
+    },
+    {
+        title: "Stones of Conflict (Melancholy Mix)",
+        file: "https://pub-eec0eab5ef444e798f8d038912e2329d.r2.dev/The%20Return/10%20Stones%20of%20Conflict%20%28Melancholy%20Mix%29.m4a",
+        artist: "Johb Ashar"
+    }
+],
     };
 
     players.forEach(player => {
@@ -606,10 +1054,26 @@ const bottomController = {
     albumName,
     coverSrc,
     getTrack: () => trackList[currentTrackIndex],
-    play: () => playTrack(),
-    pause: () => pauseTrack(),
-    next: () => nextTrack(),
-    prev: () => prevTrack()
+
+    play: () => {
+        playTrack();
+    },
+
+    pause: () => {
+        pauseTrack();
+    },
+
+    next: () => {
+        nextTrack();
+        activeBottomController = bottomController;
+        updateBottomMusicBar(bottomController, true);
+    },
+
+    prev: () => {
+        prevTrack();
+        activeBottomController = bottomController;
+        updateBottomMusicBar(bottomController, true);
+    }
 };
 
 if (!albumLayout || !audio || !playlistContainer || !playPauseBtn || !prevBtn || !nextBtn || !seekSlider || !currentTimeEl || !durationTimeEl || !currentTitleEl) return;
@@ -729,6 +1193,23 @@ let isPlaying = false;
                 updatePlayButton();
             });
         }
+        function nextTrack() {
+            currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
+            loadTrack(currentTrackIndex);
+            playTrack();
+
+            activeBottomController = bottomController;
+            updateBottomMusicBar(bottomController, true);
+        }
+
+        function prevTrack() {
+            currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
+            loadTrack(currentTrackIndex);
+            playTrack();
+
+            activeBottomController = bottomController;
+            updateBottomMusicBar(bottomController, true);
+        }
 
         function pauseTrack() {
             audio.pause();
@@ -748,16 +1229,14 @@ let isPlaying = false;
             else pauseTrack();
         });
 
-        nextBtn.addEventListener("click", () => {
-            currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
-            loadTrack(currentTrackIndex);
-            playTrack();
+        nextBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            nextTrack();
         });
 
-        prevBtn.addEventListener("click", () => {
-            currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
-            loadTrack(currentTrackIndex);
-            playTrack();
+        prevBtn.addEventListener("click", (e) => {
+            e.preventDefault();
+            prevTrack();
         });
 
         audio.addEventListener("loadedmetadata", () => {
