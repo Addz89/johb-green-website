@@ -5,6 +5,32 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+    // --- Index Hero Animated Music Ring ---
+const heroAudioBars = document.getElementById("heroAudioBars");
+
+if (heroAudioBars) {
+    const totalBars = 120;
+
+    heroAudioBars.innerHTML = "";
+
+    for (let i = 0; i < totalBars; i++) {
+        const bar = document.createElement("span");
+        bar.className = "hero-audio-bar";
+
+        const angle = (360 / totalBars) * i;
+        const randomHeight = 18 + Math.random() * 42;
+        const randomSpeed = 0.8 + Math.random() * 2.4;
+        const randomDelay = Math.random() * -2;
+
+        bar.style.setProperty("--bar-angle", `${angle}deg`);
+        bar.style.setProperty("--bar-height", `${randomHeight}px`);
+        bar.style.setProperty("--bar-speed", `${randomSpeed}s`);
+        bar.style.setProperty("--bar-delay", `${randomDelay}s`);
+
+        heroAudioBars.appendChild(bar);
+    }
+}
+
     // --- Circular Equalizer Logic (For About Page) ---
     const equalizerContainer = document.querySelector('.circular-equalizer');
     if (equalizerContainer) {
@@ -1132,67 +1158,87 @@ let isPlaying = false;
             });
         }
 
-        function loadTrack(index) {
-            const track = trackList[index];
-            if (!track) return;
+function loadTrack(index, shouldLoadAudio = false) {
+    const track = trackList[index];
+    if (!track) return;
 
-            currentTrackIndex = index;
+    currentTrackIndex = index;
 
-            audio.pause();
-            
+    audio.pause();
+
+    // Only attach/load the real audio file when the user actually plays/clicks.
+    if (shouldLoadAudio) {
+        if (audio.src !== track.file) {
+            audio.preload = "auto";
             audio.src = track.file;
             audio.load();
-
-            currentTitleEl.innerText = track.title;
-            currentTimeEl.innerText = "0:00";
-            durationTimeEl.innerText = "0:00";
-            seekSlider.value = 0;
-
-            isPlaying = false;
-            updatePlayButton();
-            loadPlaylist();
         }
+    } else {
+        audio.removeAttribute("src");
+        audio.preload = "none";
+        audio.load();
+    }
 
-        function playTrack() {
-            if (activeNativeAudio && activeNativeAudio !== audio) {
-                pauseNativeAudio();
-            }
-            if (typeof pauseYouTubeAudio === "function") {
-                pauseYouTubeAudio();
-            }
+    currentTitleEl.innerText = track.title;
+    currentTimeEl.innerText = "0:00";
+    durationTimeEl.innerText = "0:00";
+    seekSlider.value = 0;
 
-            audio.preload = "auto";
-            const playPromise = audio.play();
+    isPlaying = false;
+    updatePlayButton();
+    loadPlaylist();
+}
 
-            if (!playPromise || typeof playPromise.then !== "function") {
-                isPlaying = true;
-                updatePlayButton();
-                if (albumLayout) albumLayout.classList.add("is-playing");
-                player.classList.add("is-playing");
-                activeNativeAudio = audio;
-                activeNativePlayBtn = playPauseBtn;
-                activeAlbumLayout = albumLayout;
-                activeBottomController = bottomController;
-                updateBottomMusicBar(bottomController, true);
-                return;
-            }
+function playTrack() {
+    const track = trackList[currentTrackIndex];
+    if (!track) return;
 
-            playPromise.then(() => {
-                isPlaying = true;
-                updatePlayButton();
-                if (albumLayout) albumLayout.classList.add("is-playing");
-                player.classList.add("is-playing");
-                activeNativeAudio = audio;
-                activeNativePlayBtn = playPauseBtn;
-                activeAlbumLayout = albumLayout;
-                activeBottomController = bottomController;
-                updateBottomMusicBar(bottomController, true);
-            }).catch(error => {
-                console.error("AUDIO ERROR: Could not load " + audio.src, error);
-                isPlaying = false;
-                updatePlayButton();
-            });
-        }
+    if (activeNativeAudio && activeNativeAudio !== audio) {
+        pauseNativeAudio();
+    }
+
+    if (typeof pauseYouTubeAudio === "function") {
+        pauseYouTubeAudio();
+    }
+
+    // Lazy load only now, when user actually presses play.
+    if (audio.src !== track.file) {
+        audio.preload = "auto";
+        audio.src = track.file;
+        audio.load();
+    }
+
+    const playPromise = audio.play();
+
+    if (!playPromise || typeof playPromise.then !== "function") {
+        isPlaying = true;
+        updatePlayButton();
+        if (albumLayout) albumLayout.classList.add("is-playing");
+        player.classList.add("is-playing");
+        activeNativeAudio = audio;
+        activeNativePlayBtn = playPauseBtn;
+        activeAlbumLayout = albumLayout;
+        activeBottomController = bottomController;
+        updateBottomMusicBar(bottomController, true);
+        return;
+    }
+
+    playPromise.then(() => {
+        isPlaying = true;
+        updatePlayButton();
+        if (albumLayout) albumLayout.classList.add("is-playing");
+        player.classList.add("is-playing");
+        activeNativeAudio = audio;
+        activeNativePlayBtn = playPauseBtn;
+        activeAlbumLayout = albumLayout;
+        activeBottomController = bottomController;
+        updateBottomMusicBar(bottomController, true);
+    }).catch(error => {
+        console.error("AUDIO ERROR: Could not load " + audio.src, error);
+        isPlaying = false;
+        updatePlayButton();
+    });
+}
         function nextTrack() {
             currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
             loadTrack(currentTrackIndex);

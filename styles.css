@@ -124,12 +124,230 @@ body {
 .playlist-item.active .track-title, .playlist-item.active .track-number, .playlist-item.active .track-artist { color: #d37330; }
 
 /* ---------- Footer ---------- */
-.site-footer { padding: 5rem 4rem; background: #000000; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
+.site-footer { padding: 1rem 1rem; background: #000000; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); }
 .footer-logo { margin-bottom: 2rem; font-size: 1.5rem; opacity: 0.5; }
 .social-links { display: flex; justify-content: center; gap: 3rem; margin-bottom: 3rem; }
 .social-links a { color: #888; text-decoration: none; font-size: 0.85rem; letter-spacing: 3px; text-transform: uppercase; transition: all 0.3s ease; }
 .social-links a:hover { color: #b89669; transform: translateY(-3px); }
 .copyright { color: #444; font-size: 0.75rem; letter-spacing: 2px; }
+
+
+/* =========================================================
+   INDEX HERO ANIMATED MUSIC RING
+   ========================================================= */
+
+.hero-audio-wrap {
+    position: relative;
+    width: min(760px, 92vw);
+    height: min(760px, 92vw);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-title-layer {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    pointer-events: none;
+}
+
+.hero-audio-orbit {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.hero-audio-orbit::before {
+    content: "";
+    position: absolute;
+    width: 78%;
+    height: 78%;
+    border-radius: 50%;
+    border: 1px solid rgba(184, 150, 105, 0.16);
+    box-shadow:
+        0 0 45px rgba(211, 115, 48, 0.15),
+        inset 0 0 35px rgba(184, 150, 105, 0.08);
+    animation: heroRingRotate 18s linear infinite;
+}
+
+.hero-audio-orbit::after {
+    content: "";
+    position: absolute;
+    width: 62%;
+    height: 62%;
+    border-radius: 50%;
+    border: 1px solid rgba(211, 115, 48, 0.15);
+    box-shadow:
+        0 0 55px rgba(211, 115, 48, 0.12),
+        inset 0 0 55px rgba(0, 0, 0, 0.65);
+    animation: heroRingPulse 3.8s ease-in-out infinite;
+}
+
+.hero-audio-bars {
+    position: absolute;
+    width: 82%;
+    height: 82%;
+    border-radius: 50%;
+    animation: heroBarsRotate 26s linear infinite;
+}
+
+.hero-audio-bar {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 4px;
+    height: var(--bar-height);
+    background: linear-gradient(
+        to top,
+        rgba(211, 115, 48, 0.12),
+        rgba(211, 115, 48, 0.95),
+        rgba(255, 185, 83, 0.95)
+    );
+    border-radius: 999px;
+    transform:
+        translate(-50%, -100%)
+        rotate(var(--bar-angle))
+        translateY(-305px);
+    transform-origin: 50% 100%;
+    box-shadow:
+        0 0 10px rgba(211, 115, 48, 0.9),
+        0 0 22px rgba(184, 150, 105, 0.35);
+    opacity: 0.85;
+    animation: heroEqualizer var(--bar-speed) ease-in-out infinite;
+    animation-delay: var(--bar-delay);
+}
+
+.hero-audio-glow {
+    position: absolute;
+    width: 72%;
+    height: 72%;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, rgba(211, 115, 48, 0.12) 0%, transparent 52%),
+        radial-gradient(circle, rgba(184, 150, 105, 0.08) 0%, transparent 70%);
+    filter: blur(3px);
+    animation: heroGlowPulse 4.5s ease-in-out infinite;
+}
+
+@keyframes heroEqualizer {
+    0%, 100% {
+        height: calc(var(--bar-height) * 0.45);
+        opacity: 0.38;
+    }
+
+    35% {
+        height: calc(var(--bar-height) * 1.45);
+        opacity: 1;
+    }
+
+    65% {
+        height: calc(var(--bar-height) * 0.75);
+        opacity: 0.65;
+    }
+}
+
+@keyframes heroBarsRotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes heroRingRotate {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(360deg) scale(1);
+    }
+}
+
+@keyframes heroRingPulse {
+    0%, 100% {
+        transform: scale(0.98);
+        opacity: 0.45;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 1;
+    }
+}
+
+@keyframes heroGlowPulse {
+    0%, 100% {
+        opacity: 0.38;
+        transform: scale(0.92);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.08);
+    }
+}
+
+/* Make sure the title sits nicely inside the ring */
+.hero-audio-wrap h1 {
+    position: relative;
+    z-index: 5;
+    margin-bottom: 1rem;
+}
+
+.hero-audio-wrap .subtitle {
+    position: relative;
+    z-index: 5;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .hero-audio-wrap {
+        width: 92vw;
+        height: 92vw;
+        max-height: 520px;
+    }
+
+    .hero-audio-bar {
+        width: 3px;
+        transform:
+            translate(-50%, -100%)
+            rotate(var(--bar-angle))
+            translateY(-190px);
+    }
+
+    .hero-audio-wrap h1 {
+        font-size: 3.3rem;
+    }
+
+    .hero-audio-wrap .subtitle {
+        font-size: 0.65rem;
+        letter-spacing: 4px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-audio-wrap {
+        width: 96vw;
+        height: 96vw;
+        max-height: 430px;
+    }
+
+    .hero-audio-bar {
+        width: 2px;
+        transform:
+            translate(-50%, -100%)
+            rotate(var(--bar-angle))
+            translateY(-155px);
+    }
+
+    .hero-audio-wrap h1 {
+        font-size: 2.6rem;
+    }
+}
 
 /* =========================================================
    FIXED BOTTOM MUSIC BAR
@@ -1622,4 +1840,500 @@ body {
     .video-info h2 {
         font-size: 1.28rem;
     }
+}
+
+/* =========================================================
+   MUSIC VIDEOS FINAL FIXES - FOOTER + 18+ WARNING POSTER
+   ========================================================= */
+
+body.video-page-body {
+    padding-bottom: 0 !important;
+    min-height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+body.video-page-body .video-page-content {
+    flex: 1 0 auto !important;
+    padding-bottom: 2.5rem !important;
+}
+
+body.video-page-body .site-footer {
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    padding: 1.6rem 1rem 1.4rem !important;
+}
+
+body.video-page-body .footer-logo {
+    margin-bottom: 1.4rem !important;
+}
+
+body.video-page-body .social-links {
+    margin-bottom: 1.7rem !important;
+}
+
+.footer-copy,
+.copyright {
+    color: #d7d7d7 !important;
+    font-size: 0.82rem !important;
+    letter-spacing: 0 !important;
+}
+
+body.video-page-body .bottom-music-bar {
+    display: none !important;
+}
+
+body.video-page-body .video-section:last-of-type {
+    padding-bottom: 3rem !important;
+}
+
+.warning-video-frame {
+    position: relative !important;
+    background: #000 !important;
+}
+
+.warning-video-frame video {
+    width: 100% !important;
+    display: block !important;
+    aspect-ratio: 16 / 9 !important;
+    object-fit: cover !important;
+    background: #000 !important;
+}
+
+.video-warning-overlay {
+    background: rgba(0, 0, 0, 0.26) !important;
+    backdrop-filter: none !important;
+}
+
+.video-warning-box {
+    background: rgba(0, 0, 0, 0.64) !important;
+}
+
+.video-card.warning-accepted .video-warning-overlay {
+    display: none !important;
+}
+
+@media (max-width: 900px) {
+    body.video-page-body .video-page-content {
+        padding-bottom: 1.5rem !important;
+    }
+
+    body.video-page-body .video-section:last-of-type {
+        padding-bottom: 2rem !important;
+    }
+
+    body.video-page-body .site-footer {
+        padding-bottom: 1rem !important;
+    }
+
+    body.video-page-body .social-links {
+        gap: 1.2rem !important;
+        flex-wrap: wrap !important;
+    }
+}
+/* =========================================================
+   MUSIC VIDEOS PAGE - EXTRA CINEMATIC ANIMATIONS
+   Add this to the very bottom of styles.css
+   ========================================================= */
+
+.video-page-body {
+    min-height: 100vh;
+}
+
+.video-page-content {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated background glow */
+.video-page-content::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 18%, rgba(211, 115, 48, 0.14), transparent 30%),
+        radial-gradient(circle at 84% 30%, rgba(184, 150, 105, 0.10), transparent 34%),
+        radial-gradient(circle at 50% 92%, rgba(211, 115, 48, 0.08), transparent 38%);
+    animation: videoAmbientDrift 14s ease-in-out infinite alternate;
+}
+
+/* Soft moving light sweep */
+.video-page-content::after {
+    content: "";
+    position: fixed;
+    inset: -25%;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        105deg,
+        transparent 0%,
+        transparent 42%,
+        rgba(184, 150, 105, 0.05) 50%,
+        transparent 58%,
+        transparent 100%
+    );
+    transform: translateX(-40%) rotate(10deg);
+    animation: videoLightSweep 13s ease-in-out infinite;
+}
+
+.video-page-content > section,
+.video-page-content > h1,
+.video-page-content > .video-category-heading {
+    position: relative;
+    z-index: 2;
+}
+
+/* Main page title animation */
+.video-page-content .content-section .section-title {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: videoTitleReveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s;
+}
+
+.video-page-content .content-section .section-title::after {
+    content: "";
+    display: block;
+    width: 130px;
+    height: 1px;
+    margin: 1.1rem auto 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(184, 150, 105, 0.95),
+        transparent
+    );
+    box-shadow: 0 0 22px rgba(184, 150, 105, 0.5);
+    transform: scaleX(0);
+    transform-origin: center;
+    animation: titleLineGrow 1.1s ease forwards 0.75s;
+}
+
+.video-intro {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: videoTextReveal 0.9s ease forwards 0.55s;
+}
+
+/* Section titles like Featured Videos / Restricted 18+ */
+.video-page-content > .section-title,
+.video-category-heading .section-title {
+    position: relative;
+    opacity: 0;
+    transform: translateY(26px);
+    animation: videoTitleReveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.video-page-content > .section-title::after,
+.video-category-heading .section-title::after {
+    content: "";
+    display: block;
+    width: 110px;
+    height: 1px;
+    margin: 1rem auto 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(184, 150, 105, 0.85),
+        transparent
+    );
+    transform: scaleX(0);
+    animation: titleLineGrow 1s ease forwards 0.45s;
+}
+
+/* Video cards scroll animation */
+.video-card.video-card-animate {
+    opacity: 0 !important;
+    transform: translateY(60px) scale(0.96) !important;
+    filter: blur(7px);
+    transition:
+        opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+        border-color 0.35s ease,
+        box-shadow 0.35s ease !important;
+    transition-delay: var(--card-delay, 0s) !important;
+}
+
+.video-card.video-card-animate.video-card-in-view {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    filter: blur(0);
+}
+
+/* Cinematic hover shine */
+.video-card {
+    position: relative;
+    isolation: isolate;
+}
+
+.video-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    background: linear-gradient(
+        115deg,
+        transparent 0%,
+        transparent 35%,
+        rgba(255, 255, 255, 0.08) 48%,
+        rgba(184, 150, 105, 0.15) 52%,
+        transparent 65%,
+        transparent 100%
+    );
+    transform: translateX(-140%) skewX(-18deg);
+    transition: transform 0.9s ease;
+}
+
+.video-card:hover::before {
+    transform: translateX(140%) skewX(-18deg);
+}
+
+.video-card::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    background:
+        radial-gradient(circle at 20% 0%, rgba(184, 150, 105, 0.18), transparent 35%),
+        radial-gradient(circle at 85% 100%, rgba(211, 115, 48, 0.13), transparent 40%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.video-card:hover::after {
+    opacity: 1;
+}
+
+/* Video frame glow on hover */
+.video-frame {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), transparent 22%, transparent 75%, rgba(0,0,0,0.3)),
+        radial-gradient(circle at 50% 0%, rgba(184,150,105,0.13), transparent 45%);
+    opacity: 0;
+    transition: opacity 0.35s ease;
+}
+
+.video-card:hover .video-frame::after {
+    opacity: 1;
+}
+
+.video-frame video {
+    transition:
+        transform 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+        filter 0.5s ease;
+}
+
+.video-card:hover .video-frame video {
+    transform: scale(1.035);
+    filter: contrast(1.08) brightness(1.04);
+}
+
+/* Text hover movement */
+.video-info h2 {
+    transition:
+        color 0.35s ease,
+        text-shadow 0.35s ease,
+        transform 0.35s ease;
+}
+
+.video-card:hover .video-info h2 {
+    color: #f4e6cf;
+    text-shadow: 0 0 18px rgba(184, 150, 105, 0.22);
+    transform: translateX(4px);
+}
+
+.video-info p,
+.content-label {
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        color 0.35s ease;
+}
+
+.video-card:hover .video-info p,
+.video-card:hover .content-label {
+    transform: translateX(4px);
+}
+
+/* 18+ warning animation */
+.video-warning-overlay {
+    animation: warningOverlayPulse 3.8s ease-in-out infinite;
+}
+
+.video-warning-box {
+    animation: warningBoxFloat 4.5s ease-in-out infinite;
+}
+
+.understand-btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.understand-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.24),
+        transparent
+    );
+    transform: translateX(-120%);
+    transition: transform 0.65s ease;
+}
+
+.understand-btn:hover::before {
+    transform: translateX(120%);
+}
+
+/* Keyframes */
+@keyframes videoAmbientDrift {
+    0% {
+        transform: scale(1) translate3d(0, 0, 0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(1.08) translate3d(-1.5%, 1.2%, 0);
+        opacity: 1;
+    }
+}
+
+@keyframes videoLightSweep {
+    0%, 100% {
+        transform: translateX(-42%) rotate(10deg);
+        opacity: 0;
+    }
+
+    45%, 55% {
+        transform: translateX(42%) rotate(10deg);
+        opacity: 0.75;
+    }
+}
+
+@keyframes videoTitleReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes videoTextReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleLineGrow {
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes warningOverlayPulse {
+    0%, 100% {
+        background-color: rgba(0, 0, 0, 0.72);
+    }
+
+    50% {
+        background-color: rgba(0, 0, 0, 0.86);
+    }
+}
+
+@keyframes warningBoxFloat {
+    0%, 100% {
+        transform: translateY(0);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+    }
+
+    50% {
+        transform: translateY(-6px);
+        box-shadow:
+            0 28px 80px rgba(0, 0, 0, 0.8),
+            0 0 35px rgba(184, 150, 105, 0.14);
+    }
+}
+
+/* Mobile performance */
+@media (max-width: 700px) {
+    .video-card.video-card-animate {
+        transform: translateY(38px) scale(0.98) !important;
+        filter: blur(4px);
+    }
+
+    .video-page-content::before,
+    .video-page-content::after {
+        animation-duration: 18s;
+        opacity: 0.55;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .video-card.video-card-animate,
+    .video-page-content .content-section .section-title,
+    .video-page-content > .section-title,
+    .video-intro,
+    .video-page-content::before,
+    .video-page-content::after,
+    .video-warning-overlay,
+    .video-warning-box {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+    }
+}
+/* =========================================================
+   INDEX FOOTER GAP FIX
+   Stops the music page bottom-bar spacing affecting home page
+   ========================================================= */
+
+/* Remove global bottom gap on normal pages */
+body:not(.music-page-body):not(.video-page-body) {
+    padding-bottom: 0 !important;
+}
+
+/* Make index page footer sit clean */
+body:not(.music-page-body):not(.video-page-body) .site-footer {
+    margin-bottom: 0 !important;
+    padding: 1.3rem 1rem 1.6rem !important;
+}
+
+/* Reduce huge empty space above footer on index narrative section */
+#index,
+body:not(.music-page-body):not(.video-page-body) #narratives {
+    padding-bottom: 4rem !important;
+}
+
+/* Footer text spacing cleaner */
+body:not(.music-page-body):not(.video-page-body) .footer-logo {
+    margin-bottom: 1.4rem !important;
+}
+
+body:not(.music-page-body):not(.video-page-body) .social-links {
+    margin-bottom: 1.7rem !important;
+}
+
+body:not(.music-page-body):not(.video-page-body) .copyright,
+body:not(.music-page-body):not(.video-page-body) .footer-copy {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
 }

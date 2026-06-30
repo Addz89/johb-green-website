@@ -13,10 +13,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=2100" />
+  <link rel="stylesheet" href="styles.css?v=3000" />
 </head>
 
-<body class="bg-darker">
+<body class="bg-darker video-page-body">
 
   <!-- Header -->
   <header class="site-header">
@@ -43,7 +43,7 @@
       </p>
     </section>
 
-    <section class="video-section reveal">
+    <section class="video-section">
       <div class="video-grid">
 
   <!-- AT LEAST JUDAS HAD THE DECENCY TO KILL HIMSELF -->
@@ -630,13 +630,13 @@
 
     <h1 class="section-title text-center">Featured Videos</h1>
 <br>
-        <section class="video-section reveal">
+        <section class="video-section">
       <div class="video-grid">
     <!-- Hammer On The War Machine -->
 <article class="video-card">
   <div class="video-frame">
     <video controls preload="metadata" playsinline webkit-playsinline>
-      <source src="https://pub-2cb16936da69406283281acbf06c8688.r2.dev/HAMMER%20ON%20THE%20WAR%20MACHINE%20(1).mp4" type="video/mp4">
+      <source src="https://pub-2cb16936da69406283281acbf06c8688.r2.dev/HAMMER%20ON%20THE%20WAR%20MACHINE%20%281%29.mp4" type="video/mp4">
       Your browser does not support the video tag.
     </video>
   </div>
@@ -801,7 +801,7 @@
     <!-- HEALING IS A MYTH -->
     <article class="video-card requires-warning">
       <div class="video-frame warning-video-frame">
-        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.jpg">
+        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.png">
           <source src="https://pub-685a835dcf2647c5b535ed61d4cde859.r2.dev/HEALING%20IS%20A%20MYTH.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -826,7 +826,7 @@
     <!-- SECOND 18+ VIDEO -->
     <article class="video-card requires-warning">
       <div class="video-frame warning-video-frame">
-        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.jpg">
+        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.png">
           <source src="https://pub-685a835dcf2647c5b535ed61d4cde859.r2.dev/INGEMSICO%20FROM%20PECCATORES%20REQUIEM.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -851,7 +851,7 @@
     <!-- THIRD 18+ VIDEO -->
     <article class="video-card requires-warning">
       <div class="video-frame warning-video-frame">
-        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.jpg">
+        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.png">
           <source src="https://pub-685a835dcf2647c5b535ed61d4cde859.r2.dev/MURI%20FRACTI.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -873,28 +873,30 @@
     </article>
 
         <!-- forth 18+ VIDEO -->
-    <article class="video-card requires-warning">
-      <div class="video-frame warning-video-frame">
-        <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.jpg">
-          <source src="https://pub-685a835dcf2647c5b535ed61d4cde859.r2.dev/RECORDARE-1.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
+<article class="video-card requires-warning">
+  <div class="video-frame warning-video-frame">
 
-        <div class="video-warning-overlay">
-          <div class="video-warning-box">
-            <h3>Viewer Discretion Advised</h3>
-            <p>This video contains artistic nudity. Please confirm before viewing.</p>
-            <button type="button" class="understand-btn">I Understand</button>
-          </div>
-        </div>
-      </div>
+    <video preload="metadata" playsinline webkit-playsinline poster="images/video-warning.png">
+      <source src="https://pub-685a835dcf2647c5b535ed61d4cde859.r2.dev/RECORDARE-1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
-      <div class="video-info">
-        <h2>RECORDARE</h2>
-        <p>Johb Ashar</p>
-        <span class="content-label">Contains artistic nudity</span>
+    <div class="video-warning-overlay">
+      <div class="video-warning-box">
+        <h3>Viewer Discretion Advised</h3>
+        <p>This video contains artistic nudity. Please confirm before viewing.</p>
+        <button type="button" class="understand-btn">I Understand</button>
       </div>
-    </article>
+    </div>
+
+  </div>
+
+  <div class="video-info">
+    <h2>Recordare</h2>
+    <p>Johb Ashar</p>
+    <span class="content-label">Contains artistic nudity</span>
+  </div>
+</article>
 
 
   </div>
@@ -912,16 +914,15 @@
       <a href="#" target="_blank">Instagram</a>
       <a href="#" target="_blank">Apple Music</a>
     </div>
-</section>
+
     <p class="footer-copy">
       © 2026 Johb Ashar. All Rights Reserved. Designed by Moxi Corp Studio.
     </p>
   </footer>
-
-  <script src="script.js?v=2100"></script>
+  <script src="script.js?v=3000"></script>
 
   <script>
-    // Pause other videos when one starts playing
+    // Music Videos page: pause other videos when one starts playing
     document.querySelectorAll("video").forEach(video => {
       video.addEventListener("play", () => {
         document.querySelectorAll("video").forEach(otherVideo => {
@@ -931,38 +932,25 @@
         });
       });
     });
+
+    // Restricted 18+ videos: require confirmation before controls are shown
+    document.querySelectorAll(".video-card.requires-warning").forEach(card => {
+      const video = card.querySelector("video");
+      const button = card.querySelector(".understand-btn");
+      const overlay = card.querySelector(".video-warning-overlay");
+
+      if (!video || !button || !overlay) return;
+
+      video.controls = false;
+
+      button.addEventListener("click", () => {
+        card.classList.add("warning-accepted");
+        video.controls = true;
+
+        // Do not autoplay. The warning image/poster stays until the user presses play.
+      });
+    });
   </script>
-  <script>
-  // Pause other videos when one starts playing
-  document.querySelectorAll("video").forEach(video => {
-    video.addEventListener("play", () => {
-      document.querySelectorAll("video").forEach(otherVideo => {
-        if (otherVideo !== video) {
-          otherVideo.pause();
-        }
-      });
-    });
-  });
-
-  // Viewer discretion warning for selected videos
-  document.querySelectorAll(".video-card.requires-warning").forEach(card => {
-    const video = card.querySelector("video");
-    const button = card.querySelector(".understand-btn");
-    const overlay = card.querySelector(".video-warning-overlay");
-
-    if (!video || !button || !overlay) return;
-
-    video.controls = false;
-
-    button.addEventListener("click", () => {
-      card.classList.add("warning-accepted");
-      video.controls = true;
-      video.play().catch(() => {
-        // If mobile browser blocks autoplay, user can press play manually.
-      });
-    });
-  });
-</script>
 
 </body>
 </html>
