@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Initialize Music Players ---
     initBottomMusicBar();
-    setupNativeAudioPlayers();
+setupNativeAudioPlayers();
 });
 
 // --- YouTube API (Fallback/Index Logic) ---
@@ -125,6 +125,15 @@ function initBottomMusicBar() {
     const seekSlider = document.getElementById("bottomSeekSlider");
 
     if (!playBtn || !prevBtn || !nextBtn || !seekSlider) return;
+
+    // Use the same SVG icons as the main player so iPhone does not render blue emoji buttons.
+    playBtn.innerHTML = ICONS.play;
+    prevBtn.innerHTML = ICONS.prev;
+    nextBtn.innerHTML = ICONS.next;
+
+    playBtn.setAttribute("aria-label", "Play");
+    prevBtn.setAttribute("aria-label", "Previous track");
+    nextBtn.setAttribute("aria-label", "Next track");
 
     playBtn.addEventListener("click", () => {
         if (!activeBottomController) return;
@@ -182,7 +191,10 @@ function updateBottomMusicBar(controller, isPlaying) {
     if (songTitle) songTitle.textContent = track ? track.title : "No song playing";
     if (albumTitle) albumTitle.textContent = albumName;
     if (cover && controller.coverSrc) cover.src = controller.coverSrc;
-    if (playBtn) playBtn.textContent = isPlaying ? "⏸" : "▶";
+    if (playBtn) {
+        playBtn.innerHTML = isPlaying ? ICONS.pause : ICONS.play;
+        playBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+    }
 
     bottomBar.classList.add("show");
     bottomBar.setAttribute("aria-hidden", "false");
@@ -192,7 +204,10 @@ function updateBottomMusicBar(controller, isPlaying) {
 
 function setBottomPlaying(isPlaying) {
     const playBtn = document.getElementById("bottomPlayBtn");
-    if (playBtn) playBtn.textContent = isPlaying ? "⏸" : "▶";
+    if (playBtn) {
+        playBtn.innerHTML = isPlaying ? ICONS.pause : ICONS.play;
+        playBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
+    }
 }
 
 function syncBottomProgress(audio) {
@@ -255,8 +270,7 @@ function pauseNativeAudio() {
         }
         const activePlayer = activeNativeAudio.closest ? activeNativeAudio.closest(".custom-audio-player") : null;
         if (activePlayer) activePlayer.classList.remove("is-playing");
-        if (activeAlbumLayout) activeAlbumLayout.classList.remove("is-playing");
-        setBottomPlaying(false);
+        if (activeAlbumLayout) activeAlbumLayout.classList.remove('is-playing');
     }
 }
 
@@ -568,77 +582,60 @@ function setupNativeAudioPlayers() {
         const albumKey = player.dataset.album;
         const trackList = albums[albumKey];
 
-        if (!trackList || !Array.isArray(trackList) || trackList.length === 0) {
+        if (!trackList || !trackList.length) {
             console.warn("Album not found or empty:", albumKey);
             return;
         }
 
-        const albumLayout = player.closest(".album-layout");
-        const audio = player.querySelector(".native-audio");
-        const playlistContainer = player.querySelector(".playlist-container");
-        const playPauseBtn = player.querySelector(".play-pause-btn");
-        const prevBtn = player.querySelector(".prev-btn");
-        const nextBtn = player.querySelector(".next-btn");
-        const seekSlider = player.querySelector(".seek-slider");
-        const currentTimeEl = player.querySelector(".current-time");
-        const durationTimeEl = player.querySelector(".duration-time");
-        const currentTitleEl = player.querySelector(".current-track-title");
-        const albumName = player.querySelector(".album-heading")?.textContent.trim() || "Johb Ashar";
-        const coverSrc = albumLayout?.querySelector(".album-cover-img")?.src || "images/logo.png";
+const albumLayout = player.closest(".album-layout");
+const audio = albumLayout ? albumLayout.querySelector(".native-audio") : null;
+const playlistContainer = albumLayout ? albumLayout.querySelector(".playlist-container") : null;
 
-        if (!albumLayout || !audio || !playlistContainer || !playPauseBtn || !prevBtn || !nextBtn || !seekSlider || !currentTimeEl || !durationTimeEl || !currentTitleEl) {
-            console.warn("Missing player elements for album:", albumKey);
-            return;
-        }
+const playPauseBtn = player.querySelector(".play-pause-btn");
+const prevBtn = player.querySelector(".prev-btn");
+const nextBtn = player.querySelector(".next-btn");
+const seekSlider = player.querySelector(".seek-slider");
+const currentTimeEl = player.querySelector(".current-time");
+const durationTimeEl = player.querySelector(".duration-time");
+const currentTitleEl = player.querySelector(".current-track-title");
+const albumName = player.querySelector(".album-heading")?.textContent.trim() || "Johb Ashar";
+const coverSrc = albumLayout.querySelector(".album-cover-img")?.src || "images/logo.png";
 
-        let currentTrackIndex = 0;
-        let isPlaying = false;
+const bottomController = {
+    audio,
+    albumName,
+    coverSrc,
+    getTrack: () => trackList[currentTrackIndex],
+    play: () => playTrack(),
+    pause: () => pauseTrack(),
+    next: () => nextTrack(),
+    prev: () => prevTrack()
+};
 
-        const bottomController = {
-            audio,
-            albumName,
-            coverSrc,
-            getTrack: () => trackList[currentTrackIndex],
-            play: () => playTrack(),
-            pause: () => pauseTrack(),
-            next: () => nextTrack(),
-            prev: () => prevTrack()
-        };
+if (!albumLayout || !audio || !playlistContainer || !playPauseBtn || !prevBtn || !nextBtn || !seekSlider || !currentTimeEl || !durationTimeEl || !currentTitleEl) return;
 
-        audio.preload = "metadata";
-        audio.setAttribute("playsinline", "");
-        audio.setAttribute("webkit-playsinline", "");
+/* ADD THIS HERE */
+playPauseBtn.innerHTML = ICONS.play;
+prevBtn.innerHTML = ICONS.prev;
+nextBtn.innerHTML = ICONS.next;
 
-        playPauseBtn.innerHTML = ICONS.play;
-        prevBtn.innerHTML = ICONS.prev;
-        nextBtn.innerHTML = ICONS.next;
-        playPauseBtn.setAttribute("aria-label", "Play");
-        prevBtn.setAttribute("aria-label", "Previous track");
-        nextBtn.setAttribute("aria-label", "Next track");
+playPauseBtn.setAttribute("aria-label", "Play");
+prevBtn.setAttribute("aria-label", "Previous track");
+nextBtn.setAttribute("aria-label", "Next track");
+
+let currentTrackIndex = 0;
+let isPlaying = false;
 
         function formatTime(seconds) {
-            if (!Number.isFinite(seconds)) return "0:00";
+            if (isNaN(seconds) || seconds === Infinity) return "0:00";
             const min = Math.floor(seconds / 60);
             const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
             return `${min}:${sec}`;
         }
 
         function updatePlayButton() {
-            playPauseBtn.innerHTML = isPlaying ? ICONS.pause : ICONS.play;
-            playPauseBtn.setAttribute("aria-label", isPlaying ? "Pause" : "Play");
-            setBottomPlaying(activeBottomController === bottomController && isPlaying);
-        }
-
-        function updatePlaylistActiveState() {
-            const items = playlistContainer.querySelectorAll(".playlist-item");
-            items.forEach((item, index) => {
-                const active = index === currentTrackIndex;
-                item.classList.toggle("active", active);
-                const visualizer = item.querySelector(".playing-visualizer");
-                if (visualizer) visualizer.classList.toggle("active", active && isPlaying);
-                const indexText = item.querySelector(".track-index");
-                if (indexText) indexText.style.display = active && isPlaying ? "none" : "";
-            });
+            playPauseBtn.innerHTML = audio.paused ? ICONS.play : ICONS.pause;
+            playPauseBtn.setAttribute("aria-label", audio.paused ? "Play" : "Pause");
         }
 
         function loadPlaylist() {
@@ -647,33 +644,28 @@ function setupNativeAudioPlayers() {
             trackList.forEach((track, index) => {
                 const li = document.createElement("li");
                 li.className = "playlist-item";
+
+                if (index === currentTrackIndex) li.classList.add("active");
+
                 li.innerHTML = `
                     <div class="track-number">
                         <span class="track-index">${index + 1}</span>
-                        <div class="playing-visualizer" aria-hidden="true">
-                            <div class="bar"></div><div class="bar"></div><div class="bar"></div>
-                        </div>
                     </div>
                     <div class="track-info">
                         <div class="title">${track.title}</div>
-                        <div class="artist">${track.artist || "Johb Ashar"}</div>
+                        <div class="artist">${track.artist}</div>
                     </div>
                     <div class="track-duration"></div>
                 `;
 
                 li.addEventListener("click", () => {
-                    if (currentTrackIndex === index && isPlaying) {
-                        pauseTrack();
-                        return;
-                    }
-                    loadTrack(index);
+                    currentTrackIndex = index;
+                    loadTrack(currentTrackIndex);
                     playTrack();
                 });
 
                 playlistContainer.appendChild(li);
             });
-
-            updatePlaylistActiveState();
         }
 
         function loadTrack(index) {
@@ -681,36 +673,23 @@ function setupNativeAudioPlayers() {
             if (!track) return;
 
             currentTrackIndex = index;
-            currentTitleEl.textContent = track.title;
-            currentTimeEl.textContent = "0:00";
-            durationTimeEl.textContent = "0:00";
+
+            audio.pause();
+            
+            audio.src = track.file;
+            audio.load();
+
+            currentTitleEl.innerText = track.title;
+            currentTimeEl.innerText = "0:00";
+            durationTimeEl.innerText = "0:00";
             seekSlider.value = 0;
 
-            if (audio.src !== track.file) {
-                audio.pause();
-                audio.src = track.file;
-                audio.load();
-            }
-
-            updatePlaylistActiveState();
-
-            if (activeBottomController === bottomController) {
-                updateBottomMusicBar(bottomController, isPlaying);
-            }
-        }
-
-        function setPlaying(value) {
-            isPlaying = value;
-            player.classList.toggle("is-playing", value);
-            albumLayout.classList.toggle("is-playing", value);
+            isPlaying = false;
             updatePlayButton();
-            updatePlaylistActiveState();
+            loadPlaylist();
         }
 
         function playTrack() {
-            const track = trackList[currentTrackIndex];
-            if (!track) return;
-
             if (activeNativeAudio && activeNativeAudio !== audio) {
                 pauseNativeAudio();
             }
@@ -718,109 +697,122 @@ function setupNativeAudioPlayers() {
                 pauseYouTubeAudio();
             }
 
-            if (audio.src !== track.file) {
-                audio.src = track.file;
-            }
             audio.preload = "auto";
-
             const playPromise = audio.play();
 
-            if (playPromise && typeof playPromise.then === "function") {
-                playPromise
-                    .then(() => {
-                        activeNativeAudio = audio;
-                        activeNativePlayBtn = playPauseBtn;
-                        activeAlbumLayout = albumLayout;
-                        activeBottomController = bottomController;
-                        setPlaying(true);
-                        updateBottomMusicBar(bottomController, true);
-                    })
-                    .catch(error => {
-                        console.error("AUDIO ERROR: Could not play", audio.src, error);
-                        setPlaying(false);
-                    });
-            } else {
+            if (!playPromise || typeof playPromise.then !== "function") {
+                isPlaying = true;
+                updatePlayButton();
+                if (albumLayout) albumLayout.classList.add("is-playing");
+                player.classList.add("is-playing");
                 activeNativeAudio = audio;
                 activeNativePlayBtn = playPauseBtn;
                 activeAlbumLayout = albumLayout;
                 activeBottomController = bottomController;
-                setPlaying(true);
                 updateBottomMusicBar(bottomController, true);
+                return;
             }
+
+            playPromise.then(() => {
+                isPlaying = true;
+                updatePlayButton();
+                if (albumLayout) albumLayout.classList.add("is-playing");
+                player.classList.add("is-playing");
+                activeNativeAudio = audio;
+                activeNativePlayBtn = playPauseBtn;
+                activeAlbumLayout = albumLayout;
+                activeBottomController = bottomController;
+                updateBottomMusicBar(bottomController, true);
+            }).catch(error => {
+                console.error("AUDIO ERROR: Could not load " + audio.src, error);
+                isPlaying = false;
+                updatePlayButton();
+            });
         }
 
         function pauseTrack() {
             audio.pause();
-            setPlaying(false);
+            isPlaying = false;
+            updatePlayButton();
+            if (albumLayout) albumLayout.classList.remove("is-playing");
+            player.classList.remove("is-playing");
+
             if (activeBottomController === bottomController) {
+                setBottomPlaying(false);
                 updateBottomMusicBar(bottomController, false);
             }
         }
 
-        function nextTrack() {
-            const nextIndex = (currentTrackIndex + 1) % trackList.length;
-            loadTrack(nextIndex);
-            playTrack();
-        }
-
-        function prevTrack() {
-            const prevIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
-            loadTrack(prevIndex);
-            playTrack();
-        }
-
         playPauseBtn.addEventListener("click", () => {
-            if (isPlaying && !audio.paused) pauseTrack();
-            else playTrack();
+            if (audio.paused) playTrack();
+            else pauseTrack();
         });
 
-        nextBtn.addEventListener("click", nextTrack);
-        prevBtn.addEventListener("click", prevTrack);
+        nextBtn.addEventListener("click", () => {
+            currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
+            loadTrack(currentTrackIndex);
+            playTrack();
+        });
+
+        prevBtn.addEventListener("click", () => {
+            currentTrackIndex = (currentTrackIndex - 1 + trackList.length) % trackList.length;
+            loadTrack(currentTrackIndex);
+            playTrack();
+        });
 
         audio.addEventListener("loadedmetadata", () => {
-            durationTimeEl.textContent = formatTime(audio.duration);
-            if (activeBottomController === bottomController) syncBottomProgress(audio);
+            durationTimeEl.innerText = formatTime(audio.duration);
+            syncBottomProgress(audio);
         });
 
         audio.addEventListener("timeupdate", () => {
-            if (Number.isFinite(audio.duration) && audio.duration > 0) {
+            if (!isNaN(audio.duration) && audio.duration > 0) {
                 seekSlider.value = (audio.currentTime / audio.duration) * 100;
-                currentTimeEl.textContent = formatTime(audio.currentTime);
-                durationTimeEl.textContent = formatTime(audio.duration);
+                currentTimeEl.innerText = formatTime(audio.currentTime);
+                durationTimeEl.innerText = formatTime(audio.duration);
             }
-            if (activeBottomController === bottomController) syncBottomProgress(audio);
+            syncBottomProgress(audio);
         });
 
         seekSlider.addEventListener("input", () => {
-            if (Number.isFinite(audio.duration) && audio.duration > 0) {
+            if (!isNaN(audio.duration) && audio.duration > 0) {
                 audio.currentTime = audio.duration * (seekSlider.value / 100);
             }
         });
 
         audio.addEventListener("play", () => {
+            isPlaying = true;
+            updatePlayButton();
+            player.classList.add("is-playing");
+            if (albumLayout) albumLayout.classList.add("is-playing");
+
             activeNativeAudio = audio;
             activeNativePlayBtn = playPauseBtn;
             activeAlbumLayout = albumLayout;
             activeBottomController = bottomController;
-            setPlaying(true);
             updateBottomMusicBar(bottomController, true);
         });
 
         audio.addEventListener("pause", () => {
             if (!audio.ended) {
-                setPlaying(false);
-                if (activeBottomController === bottomController) updateBottomMusicBar(bottomController, false);
+                isPlaying = false;
+                updatePlayButton();
+                player.classList.remove("is-playing");
+                if (albumLayout) albumLayout.classList.remove("is-playing");
+                if (activeBottomController === bottomController) setBottomPlaying(false);
             }
         });
 
-        audio.addEventListener("ended", nextTrack);
-
-        audio.addEventListener("error", () => {
-            console.error("Audio failed to load:", audio.src, audio.error);
-            setPlaying(false);
+        audio.addEventListener("ended", () => {
+            currentTrackIndex = (currentTrackIndex + 1) % trackList.length;
+            loadTrack(currentTrackIndex);
+            playTrack();
         });
 
-        loadPlaylist();
+        audio.addEventListener("error", (e) => {
+            console.error("Audio failed to load:", audio.src, audio.error);
+        });
+
         loadTrack(currentTrackIndex);
     });
 }
