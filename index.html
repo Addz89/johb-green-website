@@ -85,11 +85,67 @@
         <section class="content-section bg-darker" id="narratives">
             <div class="center-layout">
                 <h2 class="section-title">The Narrative</h2>
-                <p class="section-text">Johb Ashar explores the fragile boundaries of existence through soundscapes that are as haunting as they are beautiful. Drawing inspiration from the inevitable and the unknown, every chord is a step deeper into the void.</p>
+                <p class="section-text">This is not entertainment. It is remembrance.<br>
+        This is not escape. It is return.<br>
+        Welcome to the world of Johb Ashar.</p>
                 <a href="/about.html" class="btn-outline">Read Full Story</a>
             </div>
         </section>
     </main>
+
+    <!-- Contact Section -->
+<section class="content-section contact-section" id="contact">
+    <div class="contact-layout">
+
+        <div class="contact-text">
+            <p class="contact-kicker">Contact</p>
+            <h2 class="section-title">Enquiries & Collaborations</h2>
+
+            <p class="section-text">
+                For collaborations, general enquiries, or more information about Johb Ashar’s music and visual works, please use the form below.
+            </p>
+
+            <p class="contact-note">
+                Email enquiries only.
+            </p>
+        </div>
+
+        <form class="contact-form" action="https://formspree.io/f/mgojnvlb" method="POST">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+            </div>
+
+            <div class="form-group">
+                <label for="enquiry">Enquiry Type</label>
+                <select id="enquiry" name="enquiry_type" required>
+                    <option value="">Select enquiry type</option>
+                    <option value="Collaboration">Collaboration</option>
+                    <option value="General Enquiry">General Enquiry</option>
+                    <option value="Music Enquiry">Music Enquiry</option>
+                    <option value="Visual Work Enquiry">Visual Work Enquiry</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="6" placeholder="Write your message here..." required></textarea>
+            </div>
+
+            <button type="submit" class="btn-outline contact-submit">
+                Send Enquiry
+            </button>
+
+        </form>
+
+    </div>
+</section>
 
     <!-- Professional Footer -->
     <footer class="site-footer">

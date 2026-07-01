@@ -2471,3 +2471,572 @@ body:not(.music-page-body):not(.video-page-body) .footer-copy {
         font-size: 2.35rem !important;
     }
 }
+/* =========================================================
+   ABOUT / THE ARTIST PAGE - ELITE PACK DESIGN
+   Add this to the very bottom of styles.css
+   ========================================================= */
+
+.about-page-body {
+    padding-bottom: 0 !important;
+}
+
+.about-elite-page {
+    position: relative;
+    min-height: 100vh;
+    padding-top: 120px;
+    padding-bottom: 6rem;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 15% 15%, rgba(184, 150, 105, 0.12), transparent 34%),
+        radial-gradient(circle at 85% 80%, rgba(211, 115, 48, 0.08), transparent 38%),
+        linear-gradient(rgba(0, 0, 0, 0.86), rgba(0, 0, 0, 0.98)),
+        url("images/logo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.about-elite-page::before {
+    content: "";
+    position: fixed;
+    inset: -20%;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(184, 150, 105, 0.08), transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(211, 115, 48, 0.07), transparent 32%);
+    animation: aboutAmbientMove 14s ease-in-out infinite alternate;
+}
+
+.about-elite-page > section {
+    position: relative;
+    z-index: 2;
+}
+
+/* Hero */
+.about-hero-section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 5rem 2rem 3rem;
+    text-align: center;
+}
+
+.about-kicker,
+.section-eyebrow {
+    display: block;
+    color: #b89669;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.about-hero-section h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3.5rem, 8vw, 7.5rem);
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 0 25px 70px rgba(0, 0, 0, 0.9);
+    margin-bottom: 1.2rem;
+}
+
+.about-hero-subtitle {
+    max-width: 780px;
+    margin: 0 auto;
+    color: #b8b8b8;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    letter-spacing: 0.5px;
+}
+
+/* Profile Grid */
+.about-profile-section {
+    padding: 3rem 4rem;
+}
+
+.about-profile-grid {
+    max-width: 1250px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 420px 1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.about-portrait-card {
+    position: sticky;
+    top: 130px;
+}
+
+.about-image-frame {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid rgba(184, 150, 105, 0.32);
+    background: rgba(10, 10, 10, 0.75);
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.88),
+        0 0 60px rgba(184, 150, 105, 0.08);
+}
+
+.about-image-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, transparent 45%, rgba(0, 0, 0, 0.65)),
+        radial-gradient(circle at 50% 0%, rgba(184, 150, 105, 0.12), transparent 50%);
+}
+
+.about-image {
+    width: 100%;
+    aspect-ratio: 1 / 1.25;
+    object-fit: cover;
+    display: block;
+    filter: grayscale(12%) contrast(1.08);
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s ease;
+}
+
+.about-image-frame:hover .about-image {
+    transform: scale(1.04);
+    filter: grayscale(0%) contrast(1.14);
+}
+
+.about-portrait-caption {
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid rgba(184, 150, 105, 0.18);
+    background: rgba(10, 10, 10, 0.5);
+    border-radius: 14px;
+}
+
+.about-portrait-caption span {
+    color: #b89669;
+    font-size: 0.72rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* Text Cards */
+.about-story-card,
+.about-writing-card,
+.about-feature-inner {
+    position: relative;
+    background: rgba(12, 12, 12, 0.58);
+    border: 1px solid rgba(184, 150, 105, 0.18);
+    border-radius: 24px;
+    padding: 3rem;
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.78),
+        inset 0 0 35px rgba(255, 255, 255, 0.015);
+    overflow: hidden;
+}
+
+.about-story-card::before,
+.about-writing-card::before,
+.about-feature-inner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, transparent, rgba(184, 150, 105, 0.05), transparent);
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+}
+
+.about-story-card:hover::before,
+.about-writing-card:hover::before,
+.about-feature-inner:hover::before {
+    transform: translateX(100%);
+}
+
+.about-story-card h2,
+.about-writing-card h2,
+.about-feature-inner h2,
+.about-cta-section h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.12;
+    color: #ffffff;
+    margin-bottom: 1.6rem;
+}
+
+.about-story-card p,
+.about-writing-card p,
+.about-feature-inner p,
+.about-cta-section p {
+    color: #b9b9b9;
+    font-size: 1rem;
+    line-height: 1.95;
+    letter-spacing: 0.25px;
+    margin-bottom: 1.25rem;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+}
+
+.about-tags span {
+    display: inline-block;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid rgba(184, 150, 105, 0.35);
+    border-radius: 999px;
+    color: #c9a86a;
+    font-size: 0.68rem;
+    letter-spacing: 1.7px;
+    text-transform: uppercase;
+}
+
+/* Writing Sections */
+.about-writing-section {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 3rem 4rem;
+}
+
+.about-feature-section {
+    padding: 3rem 4rem;
+}
+
+.about-feature-inner {
+    max-width: 1120px;
+    margin: 0 auto;
+    border-color: rgba(184, 150, 105, 0.28);
+    background:
+        radial-gradient(circle at top left, rgba(184, 150, 105, 0.12), transparent 38%),
+        rgba(12, 12, 12, 0.64);
+}
+
+/* Quote */
+.about-quote-section {
+    max-width: 1050px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    text-align: center;
+}
+
+.about-quote-section blockquote {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(2rem, 5vw, 4rem);
+    line-height: 1.2;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: 0 0 45px rgba(184, 150, 105, 0.16);
+}
+
+.about-quote-section blockquote::before,
+.about-quote-section blockquote::after {
+    content: "";
+    display: block;
+    width: 140px;
+    height: 1px;
+    margin: 2rem auto;
+    background: linear-gradient(90deg, transparent, rgba(184, 150, 105, 0.8), transparent);
+}
+
+/* CTA */
+.about-cta-section {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 5rem 2rem 2rem;
+    text-align: center;
+}
+
+.about-cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+/* Animation */
+.about-elite-page .reveal {
+    opacity: 0;
+    transform: translateY(70px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about-elite-page .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@keyframes aboutAmbientMove {
+    0% {
+        transform: scale(1) translate3d(0, 0, 0);
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: scale(1.08) translate3d(-1.5%, 1.5%, 0);
+        opacity: 1;
+    }
+}
+
+/* Mobile */
+@media (max-width: 950px) {
+    .about-elite-page {
+        padding-top: 120px;
+        background-attachment: scroll;
+    }
+
+    .about-profile-section,
+    .about-writing-section,
+    .about-feature-section {
+        padding: 2rem 1rem;
+    }
+
+    .about-profile-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-portrait-card {
+        position: relative;
+        top: auto;
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .about-story-card,
+    .about-writing-card,
+    .about-feature-inner {
+        padding: 2rem 1.3rem;
+        border-radius: 18px;
+    }
+
+    .about-hero-section {
+        padding: 4rem 1rem 2rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .about-elite-page {
+        padding-top: 135px;
+    }
+
+    .about-hero-section h1 {
+        font-size: 3.2rem;
+    }
+
+    .about-kicker,
+    .section-eyebrow {
+        font-size: 0.62rem;
+        letter-spacing: 3px;
+    }
+
+    .about-story-card p,
+    .about-writing-card p,
+    .about-feature-inner p,
+    .about-cta-section p {
+        font-size: 0.92rem;
+        line-height: 1.8;
+    }
+
+    .about-tags span {
+        font-size: 0.58rem;
+        letter-spacing: 1.2px;
+    }
+
+    .about-quote-section {
+        padding: 3rem 1rem;
+    }
+
+    .about-cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .about-cta-buttons .btn-outline {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* Stop global bottom music bar spacing affecting About page */
+.about-page-body {
+    padding-bottom: 0 !important;
+}
+
+/* =========================================================
+   INDEX CONTACT FORM - ELITE PACK
+   ========================================================= */
+
+.contact-section {
+    position: relative;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(184, 150, 105, 0.08), transparent 35%),
+        radial-gradient(circle at 85% 75%, rgba(211, 115, 48, 0.06), transparent 40%),
+        #030303;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.contact-layout {
+    max-width: 1150px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.contact-text .section-title {
+    text-align: left;
+    margin-bottom: 1.6rem;
+}
+
+.contact-kicker {
+    color: #b89669;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.contact-note {
+    margin-top: 1.5rem;
+    color: #b89669;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.contact-form {
+    position: relative;
+    padding: 2.4rem;
+    background: rgba(12, 12, 12, 0.72);
+    border: 1px solid rgba(184, 150, 105, 0.24);
+    border-radius: 22px;
+    backdrop-filter: blur(18px);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        inset 0 0 35px rgba(255, 255, 255, 0.015);
+    overflow: hidden;
+}
+
+.contact-form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(184, 150, 105, 0.05),
+        transparent
+    );
+    transform: translateX(-100%);
+    transition: transform 1s ease;
+}
+
+.contact-form:hover::before {
+    transform: translateX(100%);
+}
+
+.form-group {
+    position: relative;
+    z-index: 2;
+    margin-bottom: 1.4rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: #b89669;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    border: 1px solid rgba(184, 150, 105, 0.24);
+    background: rgba(0, 0, 0, 0.45);
+    color: #ffffff;
+    border-radius: 12px;
+    padding: 1rem 1rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: rgba(184, 150, 105, 0.75);
+    background: rgba(0, 0, 0, 0.62);
+    box-shadow: 0 0 25px rgba(184, 150, 105, 0.12);
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 150px;
+}
+
+.contact-submit {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .contact-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .contact-text .section-title {
+        text-align: center;
+    }
+
+    .contact-text {
+        text-align: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .contact-section {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .contact-form {
+        padding: 1.5rem 1rem;
+        border-radius: 18px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 0.9rem;
+    }
+}

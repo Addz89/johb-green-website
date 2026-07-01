@@ -67,7 +67,7 @@ if (heroAudioBars) {
     const rightArrow = document.querySelector('.right-arrow');
 
     if (heroSection && leftArrow && rightArrow) {
-        const images = ['images/hero.png',
+        const images = [
         'images/hero2.jpg',
         'images/logo.png',
 
