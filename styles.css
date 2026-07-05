@@ -3040,3 +3040,97 @@ body:not(.music-page-body):not(.video-page-body) .footer-copy {
         padding: 0.9rem;
     }
 }
+/* =========================================================
+   THANK YOU PAGE
+   ========================================================= */
+
+.thanks-page-body {
+    padding-bottom: 0 !important;
+}
+
+.thanks-page-content {
+    min-height: 100vh;
+    padding-top: 140px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(184, 150, 105, 0.12), transparent 35%),
+        radial-gradient(circle at 80% 80%, rgba(211, 115, 48, 0.08), transparent 35%),
+        linear-gradient(rgba(0, 0, 0, 0.88), rgba(0, 0, 0, 0.98)),
+        url("images/logo.png");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
+.thanks-section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.thanks-card {
+    max-width: 760px;
+    width: 100%;
+    text-align: center;
+    padding: 4rem 3rem;
+    border-radius: 24px;
+    background: rgba(10, 10, 10, 0.72);
+    border: 1px solid rgba(184, 150, 105, 0.35);
+    box-shadow:
+        0 35px 100px rgba(0, 0, 0, 0.88),
+        0 0 70px rgba(184, 150, 105, 0.10);
+    backdrop-filter: blur(18px);
+}
+
+.thanks-kicker {
+    color: #b89669;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+
+.thanks-card h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+}
+
+.thanks-card p {
+    max-width: 560px;
+    margin: 0 auto 1rem;
+    color: #b8b8b8;
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+.thanks-card .btn-outline {
+    margin-top: 2rem;
+}
+
+@media (max-width: 768px) {
+    .thanks-page-content {
+        padding-top: 160px;
+        padding-bottom: 4rem;
+    }
+
+    .thanks-card {
+        padding: 3rem 1.5rem;
+        border-radius: 18px;
+    }
+
+    .thanks-kicker {
+        font-size: 0.68rem;
+        letter-spacing: 3px;
+    }
+
+    .thanks-card p {
+        font-size: 0.95rem;
+    }
+}
