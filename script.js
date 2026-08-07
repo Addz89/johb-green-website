@@ -129,10 +129,101 @@ if (heroAudioBars) {
     }, observerOptions);
     document.querySelectorAll('.reveal, .album-section').forEach(section => observer.observe(section));
 
+    // --- Solmer Cinematic Motion Experience ---
+    initSolmerExperience();
+
     // --- Initialize Music Players ---
     initBottomMusicBar();
 setupNativeAudioPlayers();
 });
+
+function initSolmerExperience() {
+    const page = document.querySelector('.solmer-page');
+    const hero = document.querySelector('.solmer-hero');
+
+    if (!page || !hero) return;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.body.classList.add('solmer-motion');
+
+    const revealTargets = document.querySelectorAll(
+        '.solmer-copy p, .solmer-declaration p, .solmer-themes > *, .solmer-essence blockquote'
+    );
+
+    revealTargets.forEach((element, index) => {
+        element.style.setProperty('--solmer-delay', `${(index % 6) * 90}ms`);
+    });
+
+    if (reduceMotion) {
+        document.body.classList.add('solmer-reduced-motion');
+        revealTargets.forEach(element => element.classList.add('solmer-visible'));
+        return;
+    }
+
+    const detailObserver = new IntersectionObserver((entries, activeObserver) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('solmer-visible');
+            activeObserver.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -7% 0px'
+    });
+
+    revealTargets.forEach(element => detailObserver.observe(element));
+
+    const particleLayer = document.createElement('div');
+    particleLayer.className = 'solmer-particles';
+    particleLayer.setAttribute('aria-hidden', 'true');
+
+    const particleCount = window.matchMedia('(max-width: 700px)').matches ? 10 : 18;
+    for (let index = 0; index < particleCount; index++) {
+        const particle = document.createElement('span');
+        particle.style.setProperty('--particle-x', `${8 + Math.random() * 86}%`);
+        particle.style.setProperty('--particle-size', `${1 + Math.random() * 2.8}px`);
+        particle.style.setProperty('--particle-duration', `${8 + Math.random() * 12}s`);
+        particle.style.setProperty('--particle-delay', `${Math.random() * -14}s`);
+        particle.style.setProperty('--particle-drift', `${-35 + Math.random() * 70}px`);
+        particleLayer.appendChild(particle);
+    }
+    hero.appendChild(particleLayer);
+
+    let pointerFrame = null;
+    hero.addEventListener('pointermove', event => {
+        if (event.pointerType === 'touch') return;
+
+        const bounds = hero.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 2;
+        const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 2;
+
+        if (pointerFrame) cancelAnimationFrame(pointerFrame);
+        pointerFrame = requestAnimationFrame(() => {
+            hero.style.setProperty('--solmer-pointer-x', x.toFixed(3));
+            hero.style.setProperty('--solmer-pointer-y', y.toFixed(3));
+        });
+    });
+
+    hero.addEventListener('pointerleave', () => {
+        hero.style.setProperty('--solmer-pointer-x', '0');
+        hero.style.setProperty('--solmer-pointer-y', '0');
+    });
+
+    let scrollFrame = null;
+    const updateScrollMotion = () => {
+        if (scrollFrame) return;
+
+        scrollFrame = requestAnimationFrame(() => {
+            const bounds = hero.getBoundingClientRect();
+            const progress = Math.max(0, Math.min(1, -bounds.top / Math.max(bounds.height, 1)));
+            hero.style.setProperty('--solmer-scroll', progress.toFixed(3));
+            scrollFrame = null;
+        });
+    };
+
+    window.addEventListener('scroll', updateScrollMotion, { passive: true });
+    updateScrollMotion();
+}
 
 // --- YouTube API (Fallback/Index Logic) ---
 let ytPlayers = {};
@@ -1377,3 +1468,59 @@ function playTrack() {
         loadTrack(currentTrackIndex);
     });
 }
+
+// =========================================================
+// UNIFIED JOHB ASHAR TOP BAR — V6000
+// =========================================================
+document.addEventListener('DOMContentLoaded', () => {
+  const header = document.querySelector('[data-site-header]');
+  const toggle = header?.querySelector('.site-menu-toggle');
+  const nav = header?.querySelector('.main-nav');
+  const firstLink = nav?.querySelector('a');
+
+  if (!header || !toggle || !nav) return;
+
+  nav.setAttribute('aria-hidden', window.innerWidth <= 1100 ? 'true' : 'false');
+
+  const closeMenu = ({ returnFocus = false } = {}) => {
+    const wasOpen = header.classList.contains('nav-open');
+    header.classList.remove('nav-open');
+    document.body.classList.remove('site-menu-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Open navigation');
+    nav.setAttribute('aria-hidden', window.innerWidth <= 1100 ? 'true' : 'false');
+    if (returnFocus && wasOpen) toggle.focus();
+  };
+
+  const openMenu = () => {
+    header.classList.add('nav-open');
+    document.body.classList.add('site-menu-open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Close navigation');
+    nav.setAttribute('aria-hidden', 'false');
+    window.setTimeout(() => firstLink?.focus(), 180);
+  };
+
+  toggle.addEventListener('click', () => {
+    header.classList.contains('nav-open') ? closeMenu() : openMenu();
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => closeMenu());
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && header.classList.contains('nav-open')) {
+      closeMenu({ returnFocus: true });
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 1100) {
+      closeMenu();
+      nav.setAttribute('aria-hidden', 'false');
+    } else if (!header.classList.contains('nav-open')) {
+      nav.setAttribute('aria-hidden', 'true');
+    }
+  });
+});

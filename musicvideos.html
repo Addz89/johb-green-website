@@ -13,22 +13,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=3000" />
+  <link rel="stylesheet" href="styles.css?v=7000" />
 </head>
 
 <body class="bg-darker video-page-body">
 
   <!-- Header -->
-  <header class="site-header">
-    <div class="logo">JOHB ASHAR</div>
+    <header class="site-header" data-site-header>
+    <a class="logo" href="index.html" aria-label="Johb Ashar home">JOHB ASHAR</a>
 
-    <nav class="main-nav">
+    <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="site-navigation" aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
-        <li><a href="musicvideos.html" class="active-link">Music Videos</a></li>
+        <li><a href="musicvideos.html" class="active-link" aria-current="page">Music Videos</a></li>
         <li><a href="music.html">Music Only</a></li>
         <li><a href="index.html#narratives">Narratives</a></li>
         <li><a href="about.html">About</a></li>
+        <li><a href="solmer.html">Solmer</a></li>
       </ul>
     </nav>
   </header>
@@ -48,6 +53,58 @@
 <br>
         <section class="video-section">
       <div class="video-grid">
+
+<!-- TONGUE TIED HEART — newest featured video -->
+<article class="video-card">
+  <div class="video-frame">
+    <video
+      controls
+      preload="metadata"
+      playsinline
+      webkit-playsinline
+      poster="images/video-thumbs/tongue-tied-heart-thumb.png"
+    >
+      <source
+        src="https://pub-8e06a9e709e94c5ab6b3c8b78f71c375.r2.dev/TONGUE%20TIED%20HEART.mp4"
+        type="video/mp4"
+      >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="video-info">
+    <h2>TONGUE TIED HEART</h2>
+    <p>Johb Ashar</p>
+  </div>
+</article>
+
+<article class="video-card">
+  <div class="video-frame">
+    <video
+      controls
+      preload="metadata"
+      playsinline
+      webkit-playsinline
+      poster="images/video-thumbs/888-thumb.png"
+    >
+      <source
+        src="https://pub-8e06a9e709e94c5ab6b3c8b78f71c375.r2.dev/888-1.mp4"
+        type="video/mp4"
+      >
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <div class="video-info">
+    <h2>888</h2>
+    <p>Johb Ashar</p>
+  </div>
+</article>
+
+<!-- NEXT FEATURED VIDEO SLOT
+Paste the next <article class="video-card"> block directly below this comment.
+Keep the same structure used by TONGUE TIED HEART.
+-->
 
 <!-- Pie Jesu In luce invenio te -->
 
@@ -1932,17 +1989,15 @@
     <div class="footer-logo">JOHB ASHAR</div>
 
     <div class="social-links">
-      <!-- <a href="#" target="_blank">Spotify</a> -->
-      <a href="https://www.youtube.com/@Johb-ASHAR" target="_blank">YouTube</a>
-      <!-- <a href="#" target="_blank">Instagram</a>
-      <a href="#" target="_blank">Apple Music</a> -->
+      <a href="https://www.youtube.com/@Johb-ASHAR" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/johbashar/" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
 
     <p class="footer-copy">
       © 2026 Johb Ashar. All Rights Reserved. Designed by Moxi Corp.
     </p>
   </footer>
-  <script src="script.js?v=3000"></script>
+  <script src="script.js?v=7000"></script>
 
   <script>
     // Music Videos page: pause other videos when one starts playing

@@ -18,22 +18,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;600&family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css?v=4200" />
+  <link rel="stylesheet" href="styles.css?v=7000" />
 </head>
 
 <body class="bg-darker about-page-body">
 
   <!-- Navigation Header -->
-  <header class="site-header">
-    <div class="logo">JOHB ASHAR</div>
+    <header class="site-header" data-site-header>
+    <a class="logo" href="index.html" aria-label="Johb Ashar home">JOHB ASHAR</a>
 
-    <nav class="main-nav">
+    <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="site-navigation" aria-label="Main navigation">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="musicvideos.html">Music Videos</a></li>
         <li><a href="music.html">Music Only</a></li>
         <li><a href="index.html#narratives">Narratives</a></li>
-        <li><a href="about.html" class="active-link">About</a></li>
+        <li><a href="about.html" class="active-link" aria-current="page">About</a></li>
+        <li><a href="solmer.html">Solmer</a></li>
       </ul>
     </nav>
   </header>
@@ -195,7 +200,8 @@
     <div class="logo footer-logo">JOHB ASHAR</div>
 
     <div class="social-links">
-      <a href="https://www.youtube.com/@Johb-ASHAR" target="_blank">YouTube</a>
+      <a href="https://www.youtube.com/@Johb-ASHAR" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a href="https://www.instagram.com/johbashar/" target="_blank" rel="noopener noreferrer">Instagram</a>
     </div>
 
     <p class="copyright">
@@ -203,6 +209,6 @@
     </p>
   </footer>
 
-  <script src="script.js?v=4200"></script>
+  <script src="script.js?v=7000"></script>
 </body>
 </html>

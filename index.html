@@ -17,21 +17,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=7000">
 </head>
 <body>
 
-    <header class="site-header">
-        <div class="logo">JOHB ASHAR</div>
-        <nav class="main-nav">
-            <ul>
-                <li><a href="musicvideos.html">Music Videos</a></li>
-                <li><a href="music.html">Music Only</a></li>
-                <li><a href="#narratives">Narratives</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+      <header class="site-header" data-site-header>
+    <a class="logo" href="index.html" aria-label="Johb Ashar home">JOHB ASHAR</a>
+
+    <button class="site-menu-toggle" type="button" aria-expanded="false" aria-controls="site-navigation" aria-label="Open navigation">
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav class="main-nav" id="site-navigation" aria-label="Main navigation">
+      <ul>
+        <li><a href="index.html" class="active-link" aria-current="page">Home</a></li>
+        <li><a href="musicvideos.html">Music Videos</a></li>
+        <li><a href="music.html">Music Only</a></li>
+        <li><a href="index.html#narratives">Narratives</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="solmer.html">Solmer</a></li>
+      </ul>
+    </nav>
+  </header>
     
 
     <main>
@@ -55,10 +62,75 @@
             <button class="nav-arrow right-arrow" aria-label="Next image">&#10095;</button>
         </section>
 
-    </main>
-    <!-- Featured Video Section -->
-        <!-- Featured Video Section -->
-<section class="content-section" id="music-videos">
+
+<section class="home-manifesto reveal" id="world">
+    <div class="home-manifesto-inner">
+        <p class="home-kicker">Enter the World</p>
+        <h2>Where sound becomes ritual<br>and image becomes remembrance.</h2>
+        <p>
+            Johb Ashar creates immersive works between the earthly and the eternal—music,
+            moving image, symbolism and human witness shaped into one unfolding mythology.
+        </p>
+        <a class="home-text-link" href="about.html">Discover the artist <span aria-hidden="true">↗</span></a>
+    </div>
+</section>
+
+<section class="home-portals reveal" aria-labelledby="explore-title">
+    <div class="home-section-heading">
+        <p class="home-kicker">Explore</p>
+        <h2 id="explore-title">Four entrances. One world.</h2>
+    </div>
+
+    <div class="home-portal-grid">
+        <a class="home-portal home-portal--videos" href="musicvideos.html">
+            <span class="home-portal-number">01</span>
+            <span class="home-portal-copy">
+                <small>Moving Image</small>
+                <strong>Music Videos</strong>
+                <em>Enter the visual archive</em>
+            </span>
+        </a>
+
+        <a class="home-portal home-portal--music" href="music.html">
+            <span class="home-portal-number">02</span>
+            <span class="home-portal-copy">
+                <small>Sound</small>
+                <strong>Music Only</strong>
+                <em>Listen beyond the image</em>
+            </span>
+        </a>
+
+        <a class="home-portal home-portal--story" href="about.html">
+            <span class="home-portal-number">03</span>
+            <span class="home-portal-copy">
+                <small>Mythology</small>
+                <strong>The Narrative</strong>
+                <em>Read the world behind the work</em>
+            </span>
+        </a>
+
+        <a class="home-portal home-portal--solmer" href="solmer.html">
+            <span class="home-portal-number">04</span>
+            <span class="home-portal-copy">
+                <small>Movement</small>
+                <strong>Solmer</strong>
+                <em>Meet the principal dancer</em>
+            </span>
+        </a>
+    </div>
+</section>
+
+<section class="home-creed reveal" aria-label="Johb Ashar artistic statement">
+    <div class="home-creed-mark" aria-hidden="true">✦</div>
+    <blockquote>
+        “The work does not ask to be watched from a distance.<br>
+        It asks you to cross the threshold.”
+    </blockquote>
+    <p>Music between life and death.</p>
+</section>
+
+<!-- Featured Video Section -->
+<section class="content-section home-youtube-section" id="music-videos">
     <div class="split-layout">
         <div class="text-block">
             <h2 class="section-title">YouTube</h2>
@@ -72,6 +144,7 @@
                rel="noopener noreferrer">
                 Visit YouTube Channel
             </a>
+            <a href="musicvideos.html" class="home-secondary-link">Browse videos on this site <span aria-hidden="true">→</span></a>
         </div>
     </div>
 </section>
@@ -87,6 +160,19 @@
             </div>
         </section>
     </main>
+
+
+<section class="home-instagram reveal" id="instagram">
+    <div class="home-instagram-orbit" aria-hidden="true">
+        <span></span><span></span><span></span>
+    </div>
+    <div class="home-instagram-content">
+        <p class="home-kicker">Follow the Archive</p>
+        <h2>Johb Ashar on Instagram</h2>
+        <p>Visual fragments, new releases, symbolic studies and moments from the evolving world behind the music.</p>
+        <a href="https://www.instagram.com/johbashar/" class="btn-outline" target="_blank" rel="noopener noreferrer">Visit Instagram</a>
+    </div>
+</section>
 
     <!-- Contact Section -->
 <section class="content-section contact-section" id="contact">
@@ -146,14 +232,12 @@
     <footer class="site-footer">
         <div class="logo footer-logo">JOHB ASHAR</div>
         <div class="social-links">
-            <!-- <a href="#">Spotify</a> -->
-            <a href="https://www.youtube.com/@Johb-ASHAR">YouTube</a>
-            <!-- <a href="#">Instagram</a> -->
-            <!-- <a href="#">Apple Music</a> -->
+            <a href="https://www.youtube.com/@Johb-ASHAR" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a href="https://www.instagram.com/johbashar/" target="_blank" rel="noopener noreferrer">Instagram</a>
         </div>
         <p class="copyright">&copy; 2026 Johb Ashar. All Rights Reserved. Designed by Moxi Corp.</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=7000"></script>
 </body>
 </html>
